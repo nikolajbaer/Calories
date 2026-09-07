@@ -1,0 +1,622 @@
+[
+  {
+    "name": "almond croissant",
+    "calories": 500.0
+  },
+  {
+    "name": "boiled egg",
+    "calories": 80.0
+  },
+  {
+    "name": "1/2 cup oatmeal",
+    "calories": 80.0
+  },
+  {
+    "name": "1/2 cup milk",
+    "calories": 80.0
+  },
+  {
+    "name": "1/2 cup plain yogurt",
+    "calories": 75.0
+  },
+  {
+    "name": "1/4 cup almonds",
+    "calories": 162.0
+  },
+  {
+    "name": "1 tbsp honey",
+    "calories": 64.0
+  },
+  {
+    "name": "apple",
+    "calories": 95.0
+  },
+  {
+    "name": "beer",
+    "calories": 200.0
+  },
+  {
+    "name": "2 oz cheese",
+    "calories": 225.0
+  },
+  {
+    "name": "carrot",
+    "calories": 25.0
+  },
+  {
+    "name": "1 cup chili",
+    "calories": 264.0
+  },
+  {
+    "name": "salad with blue cheese and dressing",
+    "calories": 250.0
+  },
+  {
+    "name": "14 tortilla chips",
+    "calories": 140.0
+  },
+  {
+    "name": "1/4 cup shredded cheese",
+    "calories": 140.0
+  },
+  {
+    "name": "1/2 cup chili",
+    "calories": 132.0
+  },
+  {
+    "name": "1 tbsp raisins",
+    "calories": 60.0
+  },
+  {
+    "name": "1/2 cup soy milk",
+    "calories": 40.0
+  },
+  {
+    "name": "tuna packet",
+    "calories": 70.0
+  },
+  {
+    "name": "1 tbsp mayo",
+    "calories": 90.0
+  },
+  {
+    "name": "slice of bread",
+    "calories": 100.0
+  },
+  {
+    "name": "1/2 cup blueberries",
+    "calories": 45.0
+  },
+  {
+    "name": "small taco",
+    "calories": 200.0
+  },
+  {
+    "name": "4 oz turkey lunch meat",
+    "calories": 100.0
+  },
+  {
+    "name": "3 slices bacon",
+    "calories": 130.0
+  },
+  {
+    "name": "BR protein pancakes",
+    "calories": 386.0
+  },
+  {
+    "name": "1/4 cup walnuts",
+    "calories": 196.0
+  },
+  {
+    "name": "1 cup spaghetti",
+    "calories": 200.0
+  },
+  {
+    "name": "1/2 cup ragu",
+    "calories": 245.0
+  },
+  {
+    "name": "1/2 cup pasta",
+    "calories": 100.0
+  },
+  {
+    "name": "Chocolate",
+    "calories": 100.0
+  },
+  {
+    "name": "English muffin",
+    "calories": 150.0
+  },
+  {
+    "name": "1 tbsp butter",
+    "calories": 100.0
+  },
+  {
+    "name": "Dijon chicken",
+    "calories": 275.0
+  },
+  {
+    "name": "small potato",
+    "calories": 130.0
+  },
+  {
+    "name": "1/2 cup corn",
+    "calories": 90.0
+  },
+  {
+    "name": "1 tbsp butter",
+    "calories": 100.0
+  },
+  {
+    "name": "1 cup beef lasagna",
+    "calories": 402.0
+  },
+  {
+    "name": "1/2 cup chicken breast",
+    "calories": 130.0
+  },
+  {
+    "name": "1/2 cup rotisserie chicken",
+    "calories": 160.0
+  },
+  {
+    "name": "Lindor",
+    "calories": 75.0
+  },
+  {
+    "name": "1/2 avocado",
+    "calories": 120.0
+  },
+  {
+    "name": "1/2 cup fat free cottage cheese",
+    "calories": 80.0
+  },
+  {
+    "name": "1 tbsp lemon curd",
+    "calories": 60.0
+  },
+  {
+    "name": "2 egg whites",
+    "calories": 35.0
+  },
+  {
+    "name": "chocolate chip cookie",
+    "calories": 100.0
+  },
+  {
+    "name": "1/2 cup cooked rice",
+    "calories": 106.0
+  },
+  {
+    "name": "1/2 cup almond milk",
+    "calories": 15.0
+  },
+  {
+    "name": "1 cup quinoa stew",
+    "calories": 150.0
+  },
+  {
+    "name": "hot dog and bun",
+    "calories": 270.0
+  },
+  {
+    "name": "1/2 cup frozen mango",
+    "calories": 45.0
+  },
+  {
+    "name": "1 cup Shepard's Pie",
+    "calories": 346.0
+  },
+  {
+    "name": "bagel",
+    "calories": 245.0
+  },
+  {
+    "name": "slice of pizza",
+    "calories": 285.0
+  },
+  {
+    "name": "slice of banana bread",
+    "calories": 200.0
+  },
+  {
+    "name": "California Roll",
+    "calories": 254.0
+  },
+  {
+    "name": "spicy tuna roll",
+    "calories": 300.0
+  },
+  {
+    "name": "8 oz steak",
+    "calories": 600.0
+  },
+  {
+    "name": "slice sandwich cheese",
+    "calories": 90.0
+  },
+  {
+    "name": "French fries",
+    "calories": 350.0
+  },
+  {
+    "name": "eggs Benedict",
+    "calories": 600.0
+  },
+  {
+    "name": "1 cup hash browns",
+    "calories": 470.0
+  },
+  {
+    "name": "ice pop",
+    "calories": 60.0
+  },
+  {
+    "name": "1 cup puffed kamut",
+    "calories": 80.0
+  },
+  {
+    "name": "1/4 cup granola",
+    "calories": 135.0
+  },
+  {
+    "name": "1/2 cup berries",
+    "calories": 30.0
+  },
+  {
+    "name": "pb cracker pack",
+    "calories": 160.0
+  },
+  {
+    "name": "3oz ice cream (small scoop)",
+    "calories": 180.0
+  },
+  {
+    "name": "200g veg quiche",
+    "calories": 400.0
+  },
+  {
+    "name": "chobani",
+    "calories": 130.0
+  },
+  {
+    "name": "1 cup grapes",
+    "calories": 60.0
+  },
+  {
+    "name": "sandwich bread",
+    "calories": 140.0
+  },
+  {
+    "name": "chicken can",
+    "calories": 150.0
+  },
+  {
+    "name": "egg fried rice 1 cup",
+    "calories": 250.0
+  },
+  {
+    "name": "10 Ritz crackers",
+    "calories": 160.0
+  },
+  {
+    "name": "1\" cheese cube",
+    "calories": 70.0
+  },
+  {
+    "name": "1/4 lb beef patty",
+    "calories": 290.0
+  },
+  {
+    "name": "1/4 cup guacamole",
+    "calories": 91.0
+  },
+  {
+    "name": "cheese stick",
+    "calories": 80.0
+  },
+  {
+    "name": "8oz tuna steak",
+    "calories": 250.0
+  },
+  {
+    "name": "blueberry muffin",
+    "calories": 450.0
+  },
+  {
+    "name": "100g veggie quiche",
+    "calories": 250.0
+  },
+  {
+    "name": "shorehouse burrito",
+    "calories": 600.0
+  },
+  {
+    "name": "tortellini 1 cup",
+    "calories": 250.0
+  },
+  {
+    "name": "sandwich cookies (2)",
+    "calories": 120.0
+  },
+  {
+    "name": "fish taco",
+    "calories": 350.0
+  },
+  {
+    "name": "baklava",
+    "calories": 180.0
+  },
+  {
+    "name": "1/2 Italian sausage",
+    "calories": 200.0
+  },
+  {
+    "name": "1/4 cup hashbrowns",
+    "calories": 150.0
+  },
+  {
+    "name": "can of tuna",
+    "calories": 120.0
+  },
+  {
+    "name": "carne asada taco",
+    "calories": 250.0
+  },
+  {
+    "name": "Ritz crackers pack PB",
+    "calories": 200.0
+  },
+  {
+    "name": "1 cup tuna risotto",
+    "calories": 220.0
+  },
+  {
+    "name": "1 cup shrimp and grits",
+    "calories": 350.0
+  },
+  {
+    "name": "2 wasa eye crackers",
+    "calories": 40.0
+  },
+  {
+    "name": "1 French toast slice",
+    "calories": 150.0
+  },
+  {
+    "name": "2 tbsp hummis",
+    "calories": 80.0
+  },
+  {
+    "name": "100g pizza",
+    "calories": 275.0
+  },
+  {
+    "name": "Taco Bell taco",
+    "calories": 170.0
+  },
+  {
+    "name": "pan fried fish 80z",
+    "calories": 350.0
+  },
+  {
+    "name": "gyro",
+    "calories": 650.0
+  },
+  {
+    "name": "soyrizo burrito",
+    "calories": 400.0
+  },
+  {
+    "name": "3/4 cup oats",
+    "calories": 225.0
+  },
+  {
+    "name": "1/2 cup dal",
+    "calories": 150.0
+  },
+  {
+    "name": "1/2 cup hash browns",
+    "calories": 230.0
+  },
+  {
+    "name": "1/2 cup homemade Mac and cheese",
+    "calories": 255.0
+  },
+  {
+    "name": "1 tbsp peanut butter",
+    "calories": 90.0
+  },
+  {
+    "name": "1 tbsp jam",
+    "calories": 50.0
+  },
+  {
+    "name": "1 cup spinach ricotta lasagna",
+    "calories": 350.0
+  },
+  {
+    "name": "granola bar",
+    "calories": 190.0
+  },
+  {
+    "name": "meatball sub",
+    "calories": 950.0
+  },
+  {
+    "name": "protein shake",
+    "calories": 160.0
+  },
+  {
+    "name": "shrimp 1 cup",
+    "calories": 100.0
+  },
+  {
+    "name": "athletic beer",
+    "calories": 65.0
+  },
+  {
+    "name": "gyro",
+    "calories": 500.0
+  },
+  {
+    "name": "oikos triple zero",
+    "calories": 120.0
+  },
+  {
+    "name": "bahn mi",
+    "calories": 650.0
+  },
+  {
+    "name": "slim jim",
+    "calories": 100.0
+  },
+  {
+    "name": "lemon tart small",
+    "calories": 250.0
+  },
+  {
+    "name": "breakfast sausage",
+    "calories": 60.0
+  },
+  {
+    "name": "gyoza (3)",
+    "calories": 180.0
+  },
+  {
+    "name": "mini scone",
+    "calories": 150.0
+  },
+  {
+    "name": "1 tbsp olive oil",
+    "calories": 120.0
+  },
+  {
+    "name": "broccoli 1 cup",
+    "calories": 30.0
+  },
+  {
+    "name": "pad Thai 1 cup",
+    "calories": 350.0
+  },
+  {
+    "name": "fresh spring roll",
+    "calories": 150.0
+  },
+  {
+    "name": "bbq pulled pork 1/2 cup",
+    "calories": 230.0
+  },
+  {
+    "name": "sweet potato roasted with oil 1/2 cup",
+    "calories": 100.0
+  },
+  {
+    "name": "coleslaw 1/2 cup",
+    "calories": 125.0
+  },
+  {
+    "name": "small slice of pie",
+    "calories": 250.0
+  },
+  {
+    "name": "sliver of pie",
+    "calories": 150.0
+  },
+  {
+    "name": "1/2 burrito",
+    "calories": 400.0
+  },
+  {
+    "name": "fried egg",
+    "calories": 100.0
+  },
+  {
+    "name": "butter chicken 1 cup",
+    "calories": 450.0
+  },
+  {
+    "name": "breakfast burrito",
+    "calories": 600.0
+  },
+  {
+    "name": "roast beef cold cuts 4oz",
+    "calories": 200.0
+  },
+  {
+    "name": "olives 1/4 cup",
+    "calories": 50.0
+  },
+  {
+    "name": "cream 1/4 cup",
+    "calories": 200.0
+  },
+  {
+    "name": "cream cheese 1/4 cup",
+    "calories": 175.0
+  },
+  {
+    "name": "Bolognese sauce 1/2 cup",
+    "calories": 200.0
+  },
+  {
+    "name": "hamburger",
+    "calories": 500.0
+  },
+  {
+    "name": "onion rings 1 cup",
+    "calories": 450.0
+  },
+  {
+    "name": "roast beef 8oz",
+    "calories": 400.0
+  },
+  {
+    "name": "ham and bean soup 1 cup",
+    "calories": 200.0
+  },
+  {
+    "name": "alfredo 1/4 cup",
+    "calories": 200.0
+  },
+  {
+    "name": "fish taco",
+    "calories": 330.0
+  },
+  {
+    "name": "mini slim jim",
+    "calories": 45.0
+  },
+  {
+    "name": "CHEAT DAY",
+    "calories": 2000.0
+  },
+  {
+    "name": "bag of chips",
+    "calories": 150.0
+  },
+  {
+    "name": "frozen fruit bar",
+    "calories": 150.0
+  },
+  {
+    "name": "chicken burrito",
+    "calories": 700.0
+  },
+  {
+    "name": "1/2 donut",
+    "calories": 150.0
+  },
+  {
+    "name": "slice of cake",
+    "calories": 250.0
+  },
+  {
+    "name": "acai",
+    "calories": 250.0
+  },
+  {
+    "name": "refried beans 1/2 cup",
+    "calories": 140.0
+  }
+]
