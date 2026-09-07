@@ -1,70 +1,116 @@
 .app-shell {
   max-width: 640px;
   margin: 0 auto;
-  padding: 1rem 1rem 4rem;
+  padding: 0.75rem 1rem 4rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
 }
 
 /* ---------- Header ---------- */
 
-.app-header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
+.app-header {
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
 }
 
-.app-header h1 {
-  margin: 0;
-  font-size: 1.4rem;
-}
-
-.subdued {
-  color: var(--text-secondary);
-  margin: 0.15rem 0 0;
-  font-size: 0.9rem;
-}
-
-.manage-panel {
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.ended-campaigns h3 {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin: 0 0 0.4rem;
-}
-
-.ended-campaigns ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.ended-campaigns li {
+.app-header-line {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.app-header-date {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.menu-wrap {
+  position: relative;
+}
+
+.menu-trigger {
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0.2rem 0.6rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  min-width: 15rem;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  padding: 0.3rem;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
   font-size: 0.9rem;
+}
+
+.dropdown-menu button:hover {
+  background: var(--hover-wash);
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.3rem 0.2rem;
+}
+
+.dropdown-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  padding: 0.3rem 0.6rem;
+}
+
+.campaign-edit-form {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.campaign-edit-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* ---------- Weight log ---------- */
+
+.weight-log {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.weight-log input {
+  width: 5.5rem;
+  padding: 0.3rem 0.5rem;
 }
 
 /* ---------- Progress meter ---------- */
 
 .meter {
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1rem 1.25rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .meter-headline {
@@ -86,7 +132,7 @@
 
 .meter-track {
   margin-top: 0.75rem;
-  height: 14px;
+  height: 22px;
   border-radius: 999px;
   background: var(--track-bg);
   overflow: hidden;
@@ -99,61 +145,24 @@
   transition: width 0.25s ease;
 }
 
-.meter-footer {
-  margin-top: 0.6rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.meter-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-weight: 600;
-  color: var(--status-color);
-  font-size: 0.9rem;
-}
-
-.meter-status-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 50%;
-  background: var(--status-color);
-  color: var(--status-icon-ink);
-  font-size: 0.7rem;
-}
-
 .meter-detail {
+  margin-top: 0.55rem;
   color: var(--text-secondary);
   font-size: 0.85rem;
 }
 
 .meter[data-status='good'] {
   --status-color: var(--status-good);
-  --status-icon-ink: #ffffff;
 }
-.meter[data-status='warning'] {
+.meter[data-status='over'] {
   --status-color: var(--status-warning);
-  --status-icon-ink: #241a00;
-}
-.meter[data-status='critical'] {
-  --status-color: var(--status-critical);
-  --status-icon-ink: #ffffff;
 }
 
-/* ---------- Panels ---------- */
+/* ---------- Sections ---------- */
 
 .panel {
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1rem 1.25rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -362,83 +371,82 @@ select {
   color: var(--status-critical);
 }
 
-/* ---------- Lists ---------- */
+/* ---------- Data rows ---------- */
 
 .meal-groups {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 0.6rem;
 }
 
 .meal-group-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 0.35rem;
+  padding: 0.3rem 0;
 }
 
 .meal-group-header h3 {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
 }
 
 .meal-group-header span {
   color: var(--text-secondary);
   font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .entry-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
 }
 
 .entry-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.4rem 0.5rem;
-  border-radius: 8px;
-  background: var(--page-plane);
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.entry-row:last-child {
+  border-bottom: none;
 }
 
 .entry-name {
   font-weight: 500;
 }
 
-.entry-quantity {
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-  margin-left: 0.5rem;
-}
-
 .entry-row-right {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.entry-quantity-picker {
+  width: 7rem;
+  padding: 0.3rem 0.4rem;
+  font-size: 0.85rem;
 }
 
 .entry-calories {
   font-variant-numeric: tabular-nums;
   color: var(--text-secondary);
   font-size: 0.85rem;
+  min-width: 4.5rem;
+  text-align: right;
 }
 
 .empty-state {
   color: var(--text-secondary);
   font-size: 0.9rem;
   margin: 0;
-}
-
-/* ---------- Weight log ---------- */
-
-.weight-log {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
 }

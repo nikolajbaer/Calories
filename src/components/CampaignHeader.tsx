@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Campaign } from '../types';
-import { dailyGoal, endCampaign, resumeCampaign } from '../repo';
+import { endCampaign, resumeCampaign } from '../repo';
 import { useEndedCampaigns } from '../hooks';
-import { formatDisplayDate } from '../date';
+import { formatShortDate, dayNumber } from '../date';
+import { CampaignEditForm } from './CampaignEditForm';
 
 interface CampaignHeaderProps {
   campaign: Campaign;
@@ -10,60 +11,83 @@ interface CampaignHeaderProps {
 }
 
 export function CampaignHeader({ campaign, date }: CampaignHeaderProps) {
-  const [showManage, setShowManage] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [editing, setEditing] = useState(false);
   const endedCampaigns = useEndedCampaigns();
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    function handleClick(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [menuOpen]);
 
   return (
     <header className="app-header">
-      <div className="app-header-top">
-        <div>
-          <h1>{formatDisplayDate(date)}</h1>
-          <p className="subdued">
-            Target {campaign.targetWeight} lb · Goal {dailyGoal(campaign)} cal/day
-          </p>
-        </div>
-        <button type="button" className="link-button" onClick={() => setShowManage((s) => !s)}>
-          Manage campaign
-        </button>
-      </div>
-
-      {showManage && (
-        <div className="manage-panel">
+      <div className="app-header-line">
+        <span className="app-header-date">
+          {formatShortDate(date)} · Day {dayNumber(campaign.startDate, date)}
+        </span>
+        <div className="menu-wrap" ref={menuRef}>
           <button
             type="button"
-            className="secondary-button"
-            onClick={async () => {
-              if (confirm('End this campaign? You can resume it later.')) {
-                await endCampaign(campaign.id);
-              }
-            }}
+            className="icon-button menu-trigger"
+            aria-label="Campaign menu"
+            onClick={() => setMenuOpen((s) => !s)}
           >
-            End this campaign
+            ⋮
           </button>
-
-          {endedCampaigns && endedCampaigns.length > 0 && (
-            <div className="ended-campaigns">
-              <h3>Past campaigns</h3>
-              <ul>
-                {endedCampaigns.map((c) => (
-                  <li key={c.id}>
-                    <span>
-                      {c.startWeight} → {c.targetWeight} lb ({c.startDate} to {c.endDate})
-                    </span>
+          {menuOpen && (
+            <div className="dropdown-menu">
+              <button
+                type="button"
+                onClick={() => {
+                  setEditing(true);
+                  setMenuOpen(false);
+                }}
+              >
+                Edit campaign
+              </button>
+              <button
+                type="button"
+                onClick={async () => {
+                  setMenuOpen(false);
+                  if (confirm('End this campaign? You can resume it later.')) {
+                    await endCampaign(campaign.id);
+                  }
+                }}
+              >
+                End campaign
+              </button>
+              {endedCampaigns && endedCampaigns.length > 0 && (
+                <>
+                  <div className="dropdown-divider" />
+                  <div className="dropdown-label">Resume a past campaign</div>
+                  {endedCampaigns.map((c) => (
                     <button
                       type="button"
-                      className="link-button"
-                      onClick={() => resumeCampaign(c.id)}
+                      key={c.id}
+                      onClick={() => {
+                        setMenuOpen(false);
+                        resumeCampaign(c.id);
+                      }}
                     >
-                      Resume
+                      {c.startWeight} → {c.targetWeight} lb ({c.startDate} to {c.endDate})
                     </button>
-                  </li>
-                ))}
-              </ul>
+                  ))}
+                </>
+              )}
             </div>
           )}
         </div>
-      )}
+      </div>
+
+      {editing && <CampaignEditForm campaign={campaign} onDone={() => setEditing(false)} />}
     </header>
   );
 }

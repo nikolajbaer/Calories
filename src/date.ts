@@ -19,3 +19,22 @@ export function formatDisplayDate(iso: string): string {
     day: 'numeric',
   });
 }
+
+export function formatShortDate(iso: string): string {
+  const [year, month, day] = iso.split('-').map(Number);
+  const d = new Date(year, month - 1, day);
+  return d.toLocaleDateString(undefined, {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+  });
+}
+
+/** 1-indexed day number within the campaign (start date is day 1). */
+export function dayNumber(startDateISO: string, currentISO: string): number {
+  const [sy, sm, sd] = startDateISO.split('-').map(Number);
+  const [cy, cm, cd] = currentISO.split('-').map(Number);
+  const start = Date.UTC(sy, sm - 1, sd);
+  const current = Date.UTC(cy, cm - 1, cd);
+  return Math.round((current - start) / 86_400_000) + 1;
+}

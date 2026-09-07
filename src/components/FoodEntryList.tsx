@@ -1,6 +1,6 @@
 import type { FoodEntry, MealCategory } from '../types';
-import { deleteFoodEntry, foodEntryCalories } from '../repo';
-import { formatQuantity } from '../quantity';
+import { deleteFoodEntry, foodEntryCalories, updateFoodEntryQuantity } from '../repo';
+import { QuantityPicker } from './QuantityPicker';
 
 const MEAL_ORDER: MealCategory[] = ['breakfast', 'lunch', 'dinner', 'snack'];
 const MEAL_LABELS: Record<MealCategory, string> = {
@@ -34,13 +34,14 @@ export function FoodEntryList({ entries }: FoodEntryListProps) {
             <ul className="entry-list">
               {mealEntries.map((entry) => (
                 <li key={entry.id} className="entry-row">
-                  <div>
-                    <span className="entry-name">{entry.name}</span>
-                    <span className="entry-quantity">
-                      {formatQuantity(entry.quantity, entry.servingUnit)}
-                    </span>
-                  </div>
+                  <span className="entry-name">{entry.name}</span>
                   <div className="entry-row-right">
+                    <QuantityPicker
+                      className="entry-quantity-picker"
+                      unit={entry.servingUnit}
+                      quantity={entry.quantity}
+                      onChange={(q) => updateFoodEntryQuantity(entry.id, q)}
+                    />
                     <span className="entry-calories">{Math.round(foodEntryCalories(entry))} cal</span>
                     <button
                       type="button"

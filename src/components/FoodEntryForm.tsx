@@ -5,7 +5,8 @@ import {
   searchFoodItems,
   upsertFoodItem,
 } from '../repo';
-import { fractionOptions, formatFraction, isFractionalUnit, UNIT_LABELS } from '../quantity';
+import { UNIT_LABELS } from '../quantity';
+import { QuantityPicker } from './QuantityPicker';
 
 const MEAL_OPTIONS: { value: MealCategory; label: string }[] = [
   { value: 'breakfast', label: 'Breakfast' },
@@ -253,40 +254,3 @@ export function FoodEntryForm({ campaignId, date, onAdded }: FoodEntryFormProps)
   );
 }
 
-function QuantityPicker({
-  unit,
-  quantity,
-  onChange,
-}: {
-  unit: ServingUnit;
-  quantity: number;
-  onChange: (q: number) => void;
-}) {
-  if (isFractionalUnit(unit)) {
-    const options = fractionOptions(4);
-    return (
-      <select
-        aria-label="Quantity"
-        value={quantity}
-        onChange={(e) => onChange(Number(e.target.value))}
-      >
-        {options.map((q) => (
-          <option key={q} value={q}>
-            {formatFraction(q)} {UNIT_LABELS[unit]}
-          </option>
-        ))}
-      </select>
-    );
-  }
-  return (
-    <input
-      aria-label="Quantity"
-      type="number"
-      min="0"
-      step="0.5"
-      value={quantity}
-      onChange={(e) => onChange(Number(e.target.value))}
-      style={{ width: '5rem' }}
-    />
-  );
-}

@@ -15,38 +15,25 @@ interface WeightLogProps {
  */
 export function WeightLog({ campaignId, date, existing }: WeightLogProps) {
   const [value, setValue] = useState(existing?.weight?.toString() ?? '');
-  const [editing, setEditing] = useState(!existing);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const weight = Number(value);
     if (!weight) return;
     await setWeightEntry({ campaignId, date, weight });
-    setEditing(false);
-  }
-
-  if (!editing && existing) {
-    return (
-      <div className="weight-log">
-        <span>Today's weight: <strong>{existing.weight}</strong></span>
-        <button type="button" className="link-button" onClick={() => setEditing(true)}>
-          Edit
-        </button>
-      </div>
-    );
   }
 
   return (
     <form className="weight-log" onSubmit={handleSubmit}>
-      <label htmlFor="weight-input">Log today's weight (optional)</label>
+      <label htmlFor="weight-input">Weight</label>
       <input
         id="weight-input"
         type="number"
         min="0"
         step="0.1"
+        placeholder="log today's"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        style={{ width: '6rem' }}
       />
       <button type="submit" className="link-button">
         Save

@@ -59,6 +59,23 @@ export function dailyGoal(campaign: Campaign): number {
   return campaign.baseRate - campaign.deficitTarget;
 }
 
+export async function updateCampaign(
+  id: string,
+  input: {
+    startWeight: number;
+    targetWeight: number;
+    baseRate: number;
+    deficitTarget: number;
+  },
+): Promise<void> {
+  await db.campaigns.update(id, {
+    startWeight: input.startWeight,
+    targetWeight: input.targetWeight,
+    baseRate: input.baseRate,
+    deficitTarget: input.deficitTarget,
+  });
+}
+
 // ---------- Food library ----------
 
 export async function upsertFoodItem(input: {
@@ -158,6 +175,10 @@ export async function addAdHocFoodEntry(input: {
 
 export async function deleteFoodEntry(id: string): Promise<void> {
   await db.foodEntries.delete(id);
+}
+
+export async function updateFoodEntryQuantity(id: string, quantity: number): Promise<void> {
+  await db.foodEntries.update(id, { quantity });
 }
 
 export function foodEntryCalories(entry: FoodEntry): number {
