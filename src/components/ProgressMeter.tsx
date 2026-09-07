@@ -12,29 +12,22 @@ export function ProgressMeter({ eaten, goal, exerciseCalories }: ProgressMeterPr
   const fillPct = Math.max(0, Math.min(100, (eaten / Math.max(effectiveGoal, 1)) * 100));
 
   return (
-    <div className="meter" data-status={over ? 'over' : 'good'}>
-      <div className="meter-headline">
+    <div
+      className="meter"
+      data-status={over ? 'over' : 'good'}
+      role="progressbar"
+      aria-valuenow={Math.round(eaten)}
+      aria-valuemin={0}
+      aria-valuemax={Math.round(effectiveGoal)}
+    >
+      <div className="meter-fill" style={{ width: `${fillPct}%` }} />
+      <div className="meter-content">
         <span className="meter-value">
-          {Math.abs(Math.round(remaining)).toLocaleString()}
+          {Math.abs(Math.round(remaining)).toLocaleString()} {over ? 'over' : 'left'}
         </span>
-        <span className="meter-unit">
-          calories {over ? 'over' : 'left'}
+        <span className="meter-sub">
+          {Math.round(eaten).toLocaleString()} / {Math.round(effectiveGoal).toLocaleString()}
         </span>
-      </div>
-      <div
-        className="meter-track"
-        role="progressbar"
-        aria-valuenow={Math.round(eaten)}
-        aria-valuemin={0}
-        aria-valuemax={Math.round(effectiveGoal)}
-      >
-        <div className="meter-fill" style={{ width: `${fillPct}%` }} />
-      </div>
-      <div className="meter-detail">
-        {Math.round(eaten).toLocaleString()} eaten
-        {exerciseCalories > 0 ? ` · +${Math.round(exerciseCalories).toLocaleString()} exercise` : ''}
-        {' · '}
-        {Math.round(effectiveGoal).toLocaleString()} goal
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ import type {
   ExerciseEntry,
   FoodEntry,
   FoodItem,
-  MealCategory,
   ServingUnit,
   WeightEntry,
 } from './types';
@@ -125,7 +124,6 @@ export async function searchFoodItems(query: string, limit = 8): Promise<FoodIte
 export async function addFoodEntryFromLibraryItem(input: {
   campaignId: string;
   date: string;
-  mealCategory: MealCategory;
   foodItem: FoodItem;
   quantity: number;
 }): Promise<FoodEntry> {
@@ -134,7 +132,6 @@ export async function addFoodEntryFromLibraryItem(input: {
     id: uuid(),
     campaignId: input.campaignId,
     date: input.date,
-    mealCategory: input.mealCategory,
     foodItemId: input.foodItem.id,
     name: input.foodItem.name,
     servingUnit: input.foodItem.servingUnit,
@@ -142,31 +139,6 @@ export async function addFoodEntryFromLibraryItem(input: {
     caloriesPerUnit: input.foodItem.calories * perUnit,
     proteinPerUnitG: input.foodItem.proteinG * perUnit,
     cholesterolPerUnitMg: input.foodItem.cholesterolMg * perUnit,
-    createdAt: new Date().toISOString(),
-  };
-  await db.foodEntries.add(entry);
-  return entry;
-}
-
-export async function addAdHocFoodEntry(input: {
-  campaignId: string;
-  date: string;
-  mealCategory: MealCategory;
-  name: string;
-  calories: number;
-}): Promise<FoodEntry> {
-  const entry: FoodEntry = {
-    id: uuid(),
-    campaignId: input.campaignId,
-    date: input.date,
-    mealCategory: input.mealCategory,
-    foodItemId: null,
-    name: input.name.trim(),
-    servingUnit: 'serving',
-    quantity: 1,
-    caloriesPerUnit: input.calories,
-    proteinPerUnitG: 0,
-    cholesterolPerUnitMg: 0,
     createdAt: new Date().toISOString(),
   };
   await db.foodEntries.add(entry);
@@ -207,6 +179,10 @@ export async function addExerciseEntry(input: {
 
 export async function deleteExerciseEntry(id: string): Promise<void> {
   await db.exerciseEntries.delete(id);
+}
+
+export async function updateExerciseDescription(id: string, description: string): Promise<void> {
+  await db.exerciseEntries.update(id, { description });
 }
 
 // ---------- Weight entries ----------

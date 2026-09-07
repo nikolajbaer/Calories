@@ -55,6 +55,8 @@ function App() {
         existing={weightEntry}
       />
 
+      <ExercisePanel campaignId={campaign.id} date={date} entries={exerciseEntries} />
+
       <section className="panel">
         <div className="panel-header">
           <h2>Food</h2>
@@ -63,8 +65,6 @@ function App() {
         <FoodEntryForm campaignId={campaign.id} date={date} onAdded={() => {}} />
         <FoodEntryList entries={foodEntries} />
       </section>
-
-      <ExercisePanel campaignId={campaign.id} date={date} entries={exerciseEntries} />
     </div>
   );
 }

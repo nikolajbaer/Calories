@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import type { ExerciseEntry } from '../types';
-import { addExerciseEntry, deleteExerciseEntry } from '../repo';
+import { addExerciseEntry, deleteExerciseEntry, updateExerciseDescription } from '../repo';
+import { DEFAULT_EXERCISE_LABEL } from '../exerciseTypes';
+import { ExerciseTypePicker } from './ExerciseTypePicker';
 
 interface ExercisePanelProps {
   campaignId: string;
@@ -9,15 +11,14 @@ interface ExercisePanelProps {
 }
 
 export function ExercisePanel({ campaignId, date, entries }: ExercisePanelProps) {
-  const [description, setDescription] = useState('');
+  const [type, setType] = useState(DEFAULT_EXERCISE_LABEL);
   const [calories, setCalories] = useState('');
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const cal = Number(calories);
     if (!cal) return;
-    await addExerciseEntry({ campaignId, date, description, caloriesBurned: cal });
-    setDescription('');
+    await addExerciseEntry({ campaignId, date, description: type, caloriesBurned: cal });
     setCalories('');
   }
 
@@ -29,28 +30,20 @@ export function ExercisePanel({ campaignId, date, entries }: ExercisePanelProps)
         <h2>Exercise</h2>
         {total > 0 && <span className="panel-total">+{total} cal</span>}
       </div>
-      <form className="entry-form" onSubmit={handleSubmit}>
-        <div className="entry-form-row">
-          <input
-            type="text"
-            placeholder="Description (optional)"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            aria-label="Exercise description"
-          />
-          <input
-            type="number"
-            min="0"
-            placeholder="Calories burned"
-            value={calories}
-            onChange={(e) => setCalories(e.target.value)}
-            aria-label="Calories burned"
-            style={{ width: '9rem' }}
-            required
-          />
-        </div>
-        <button type="submit" className="primary-button">
-          Add
+      <form className="entry-form-row" onSubmit={handleSubmit}>
+        <ExerciseTypePicker value={type} onChange={setType} />
+        <input
+          type="number"
+          min="0"
+          placeholder="calories"
+          value={calories}
+          onChange={(e) => setCalories(e.target.value)}
+          aria-label="Calories burned"
+          className="calories-input"
+          required
+        />
+        <button type="submit" className="primary-button" aria-label="Add exercise">
+          +
         </button>
       </form>
       {entries.length === 0 ? (
@@ -59,18 +52,12 @@ export function ExercisePanel({ campaignId, date, entries }: ExercisePanelProps)
         <ul className="entry-list">
           {entries.map((entry) => (
             <li key={entry.id} className="entry-row">
-              <span className="entry-name">{entry.description || 'Exercise'}</span>
-              <div className="entry-row-right">
-                <span className="entry-calories">{entry.caloriesBurned} cal</span>
-                <button
-                  type="button"
-                  className="icon-button"
-                  aria-label="Remove exercise entry"
-                  onClick={() => deleteExerciseEntry(entry.id)}
-                >
-                  ✕
-                </button>
-              </div>
+              <ExerciseTypePicker
+                value={entry.description}
+                onChange={(v) => updateExerciseDescription(entry.id, v)}
+                onRemove={() => deleteExerciseEntry(entry.id)}
+              />
+              <span className="entry-calories">{entry.caloriesBurned} cal</span>
             </li>
           ))}
         </ul>

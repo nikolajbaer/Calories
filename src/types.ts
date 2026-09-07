@@ -38,8 +38,6 @@ export interface FoodItem {
   createdAt: string;
 }
 
-export type MealCategory = 'breakfast' | 'lunch' | 'dinner' | 'snack';
-
 /**
  * A logged food entry for a given day. Nutrition fields are denormalized
  * (copied) from the FoodItem at log time so later edits to the library
@@ -49,7 +47,6 @@ export interface FoodEntry {
   id: string;
   campaignId: string;
   date: string; // ISO date (yyyy-mm-dd)
-  mealCategory: MealCategory;
   foodItemId: string | null; // null if the food was deleted from the library since, or entered ad hoc
   name: string;
   servingUnit: ServingUnit;

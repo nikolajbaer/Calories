@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import type { FoodItem, MealCategory, ServingUnit } from '../types';
+import type { FoodItem, ServingUnit } from '../types';
 import {
   addFoodEntryFromLibraryItem,
   searchFoodItems,
@@ -8,22 +8,7 @@ import {
 import { UNIT_LABELS } from '../quantity';
 import { QuantityPicker } from './QuantityPicker';
 
-const MEAL_OPTIONS: { value: MealCategory; label: string }[] = [
-  { value: 'breakfast', label: 'Breakfast' },
-  { value: 'lunch', label: 'Lunch' },
-  { value: 'dinner', label: 'Dinner' },
-  { value: 'snack', label: 'Snack' },
-];
-
 const UNIT_OPTIONS: ServingUnit[] = ['g', 'ml', 'oz', 'cup', 'tbsp', 'tsp', 'piece', 'slice', 'serving'];
-
-function defaultMealForNow(): MealCategory {
-  const hour = new Date().getHours();
-  if (hour < 11) return 'breakfast';
-  if (hour < 16) return 'lunch';
-  if (hour < 21) return 'dinner';
-  return 'snack';
-}
 
 interface FoodEntryFormProps {
   campaignId: string;
@@ -32,7 +17,6 @@ interface FoodEntryFormProps {
 }
 
 export function FoodEntryForm({ campaignId, date, onAdded }: FoodEntryFormProps) {
-  const [mealCategory, setMealCategory] = useState<MealCategory>(defaultMealForNow());
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState<FoodItem[]>([]);
   const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);
@@ -79,13 +63,7 @@ export function FoodEntryForm({ campaignId, date, onAdded }: FoodEntryFormProps)
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (selectedFood) {
-      await addFoodEntryFromLibraryItem({
-        campaignId,
-        date,
-        mealCategory,
-        foodItem: selectedFood,
-        quantity,
-      });
+      await addFoodEntryFromLibraryItem({ campaignId, date, foodItem: selectedFood, quantity });
       resetForm();
       onAdded();
       return;
@@ -103,40 +81,23 @@ export function FoodEntryForm({ campaignId, date, onAdded }: FoodEntryFormProps)
         proteinG: Number(newFood.proteinG) || 0,
         cholesterolMg: Number(newFood.cholesterolMg) || 0,
       });
-      await addFoodEntryFromLibraryItem({
-        campaignId,
-        date,
-        mealCategory,
-        foodItem: food,
-        quantity: servingSize,
-      });
+      await addFoodEntryFromLibraryItem({ campaignId, date, foodItem: food, quantity: servingSize });
       resetForm();
       onAdded();
       return;
     }
 
-    // Fallback: no library match, no detailed food form opened — log a quick ad hoc entry if a plain
-    // name + implied calories isn't available, prompt the user to add details instead.
+    // No library match and no detailed food form opened yet — open it instead of submitting.
     setShowNewFoodForm(true);
   }
 
   const noMatchAndTyped = !selectedFood && query.trim().length > 0 && suggestions.length === 0;
+  const previewCalories =
+    selectedFood && Math.round((quantity / selectedFood.servingSize) * selectedFood.calories);
 
   return (
     <form className="entry-form" onSubmit={handleSubmit}>
       <div className="entry-form-row">
-        <select
-          value={mealCategory}
-          onChange={(e) => setMealCategory(e.target.value as MealCategory)}
-          aria-label="Meal"
-        >
-          {MEAL_OPTIONS.map((m) => (
-            <option key={m.value} value={m.value}>
-              {m.label}
-            </option>
-          ))}
-        </select>
-
         <div className="autocomplete">
           <input
             ref={inputRef}
@@ -167,19 +128,21 @@ export function FoodEntryForm({ campaignId, date, onAdded }: FoodEntryFormProps)
         </div>
 
         {selectedFood && (
-          <QuantityPicker
-            unit={selectedFood.servingUnit}
-            quantity={quantity}
-            onChange={setQuantity}
-          />
+          <>
+            <QuantityPicker unit={selectedFood.servingUnit} quantity={quantity} onChange={setQuantity} />
+            <span className="entry-form-preview">{previewCalories} cal</span>
+          </>
         )}
-      </div>
 
-      {selectedFood && (
-        <div className="entry-form-preview">
-          {Math.round((quantity / selectedFood.servingSize) * selectedFood.calories)} cal
-        </div>
-      )}
+        <button
+          type="submit"
+          className="primary-button"
+          aria-label="Add food"
+          disabled={!selectedFood && !showNewFoodForm && !query.trim()}
+        >
+          +
+        </button>
+      </div>
 
       {noMatchAndTyped && !showNewFoodForm && (
         <button type="button" className="link-button" onClick={() => setShowNewFoodForm(true)}>
@@ -246,11 +209,6 @@ export function FoodEntryForm({ campaignId, date, onAdded }: FoodEntryFormProps)
           </label>
         </div>
       )}
-
-      <button type="submit" className="primary-button" disabled={!selectedFood && !showNewFoodForm && !query.trim()}>
-        Add
-      </button>
     </form>
   );
 }
-
