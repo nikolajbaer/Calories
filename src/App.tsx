@@ -8,7 +8,7 @@ import {
 } from './hooks';
 import { seedFoodLibraryIfEmpty } from './seed';
 import { addDays, todayISO } from './date';
-import { dailyGoal, foodEntryCalories } from './repo';
+import { createMealFromEntries, dailyGoal, foodEntryCalories } from './repo';
 import type { Campaign } from './types';
 import { CampaignSetupForm } from './components/CampaignSetupForm';
 import { CampaignHeader } from './components/CampaignHeader';
@@ -16,6 +16,7 @@ import { ProgressMeter } from './components/ProgressMeter';
 import { FoodEntryForm } from './components/FoodEntryForm';
 import { FoodEntryList } from './components/FoodEntryList';
 import { FoodLibraryScreen } from './components/FoodLibraryScreen';
+import { SaveMealBar } from './components/SaveMealBar';
 import { ExercisePanel } from './components/ExercisePanel';
 import { WeightLog } from './components/WeightLog';
 import './App.css';
@@ -47,6 +48,8 @@ function App() {
 function DayView({ campaign }: { campaign: Campaign }) {
   const [viewedDate, setViewedDate] = useState(todayISO());
   const [showFoodLibrary, setShowFoodLibrary] = useState(false);
+  const [mealMode, setMealMode] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
 
   const foodEntries = useFoodEntriesForDay(campaign.id, viewedDate);
   const exerciseEntries = useExerciseEntriesForDay(campaign.id, viewedDate);
@@ -65,6 +68,27 @@ function DayView({ campaign }: { campaign: Campaign }) {
   if (showFoodLibrary) {
     return <FoodLibraryScreen onClose={() => setShowFoodLibrary(false)} />;
   }
+
+  function toggleSelect(id: string) {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }
+
+  function exitMealMode() {
+    setMealMode(false);
+    setSelectedIds(new Set());
+  }
+
+  const handleSaveMeal = async (name: string) => {
+    const selected = foodEntries.filter((e) => selectedIds.has(e.id));
+    if (selected.length === 0) return;
+    await createMealFromEntries(name, selected);
+    exitMealMode();
+  };
 
   const eaten = foodEntries.reduce((sum, e) => sum + foodEntryCalories(e), 0);
   const exerciseCalories = exerciseEntries.reduce((sum, e) => sum + e.caloriesBurned, 0);
@@ -98,14 +122,31 @@ function DayView({ campaign }: { campaign: Campaign }) {
         <div className="panel-header">
           <h2>Food</h2>
           <div className="panel-header-right">
+            <button
+              type="button"
+              className="plate-toggle"
+              data-active={mealMode}
+              aria-label={mealMode ? 'Cancel building a meal' : 'Build a meal from today\'s food'}
+              onClick={() => (mealMode ? exitMealMode() : setMealMode(true))}
+            >
+              🍽️
+            </button>
             <button type="button" className="link-button" onClick={() => setShowFoodLibrary(true)}>
               Manage
             </button>
             <span className="panel-total">{Math.round(eaten)} cal</span>
           </div>
         </div>
-        <FoodEntryForm campaignId={campaign.id} date={viewedDate} onAdded={() => {}} />
-        <FoodEntryList entries={foodEntries} />
+        {mealMode ? (
+          <SaveMealBar selectedCount={selectedIds.size} onSave={handleSaveMeal} onCancel={exitMealMode} />
+        ) : (
+          <FoodEntryForm campaignId={campaign.id} date={viewedDate} onAdded={() => {}} />
+        )}
+        <FoodEntryList
+          entries={foodEntries}
+          selectedIds={mealMode ? selectedIds : undefined}
+          onToggleSelect={mealMode ? toggleSelect : undefined}
+        />
       </section>
     </div>
   );

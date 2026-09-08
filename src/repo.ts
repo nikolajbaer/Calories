@@ -174,6 +174,34 @@ export function foodEntryCalories(entry: FoodEntry): number {
   return entry.quantity * entry.caloriesPerUnit;
 }
 
+export function foodEntryProtein(entry: FoodEntry): number {
+  return entry.quantity * entry.proteinPerUnitG;
+}
+
+export function foodEntryCholesterol(entry: FoodEntry): number {
+  return entry.quantity * entry.cholesterolPerUnitMg;
+}
+
+/**
+ * Bundles a set of today's food entries into a single reusable FoodItem —
+ * e.g. turn "oatmeal + apple + bacon" into one "Breakfast" library entry with
+ * their combined calories/protein/cholesterol. Only adds to the library; the
+ * source entries are left exactly as logged.
+ */
+export async function createMealFromEntries(name: string, entries: FoodEntry[]): Promise<FoodItem> {
+  const calories = entries.reduce((sum, e) => sum + foodEntryCalories(e), 0);
+  const proteinG = entries.reduce((sum, e) => sum + foodEntryProtein(e), 0);
+  const cholesterolMg = entries.reduce((sum, e) => sum + foodEntryCholesterol(e), 0);
+  return upsertFoodItem({
+    name,
+    servingSize: 1,
+    servingUnit: 'serving',
+    calories,
+    proteinG,
+    cholesterolMg,
+  });
+}
+
 // ---------- Exercise entries ----------
 
 export async function addExerciseEntry(input: {
