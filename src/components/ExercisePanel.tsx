@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import type { ExerciseEntry } from '../types';
-import { addExerciseEntry, deleteExerciseEntry, updateExerciseDescription } from '../repo';
+import {
+  addExerciseEntry,
+  deleteExerciseEntry,
+  updateExerciseCalories,
+  updateExerciseDescription,
+} from '../repo';
 import { DEFAULT_EXERCISE_LABEL } from '../exerciseTypes';
 import { ExerciseTypePicker } from './ExerciseTypePicker';
 
@@ -51,17 +56,50 @@ export function ExercisePanel({ campaignId, date, entries }: ExercisePanelProps)
       ) : (
         <ul className="entry-list">
           {entries.map((entry) => (
-            <li key={entry.id} className="entry-row">
-              <ExerciseTypePicker
-                value={entry.description}
-                onChange={(v) => updateExerciseDescription(entry.id, v)}
-                onRemove={() => deleteExerciseEntry(entry.id)}
-              />
-              <span className="entry-calories">{entry.caloriesBurned} cal</span>
-            </li>
+            // Keying on caloriesBurned remounts the row (fresh initial state) whenever
+            // the stored value changes, instead of syncing local state via an effect.
+            <ExerciseEntryRow key={`${entry.id}-${entry.caloriesBurned}`} entry={entry} />
           ))}
         </ul>
       )}
     </section>
+  );
+}
+
+function ExerciseEntryRow({ entry }: { entry: ExerciseEntry }) {
+  const [calories, setCalories] = useState(String(entry.caloriesBurned));
+
+  function handleBlur() {
+    const value = Number(calories);
+    if (value > 0 && value !== entry.caloriesBurned) {
+      updateExerciseCalories(entry.id, value);
+    } else {
+      setCalories(String(entry.caloriesBurned));
+    }
+  }
+
+  return (
+    <li className="entry-row">
+      <ExerciseTypePicker value={entry.description} onChange={(v) => updateExerciseDescription(entry.id, v)} />
+      <div className="entry-row-right">
+        <input
+          type="number"
+          min="0"
+          className="calories-input"
+          value={calories}
+          onChange={(e) => setCalories(e.target.value)}
+          onBlur={handleBlur}
+          aria-label="Calories burned"
+        />
+        <button
+          type="button"
+          className="remove-icon-button"
+          aria-label="Remove exercise entry"
+          onClick={() => deleteExerciseEntry(entry.id)}
+        >
+          ⛔
+        </button>
+      </div>
+    </li>
   );
 }

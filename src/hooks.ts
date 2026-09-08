@@ -70,6 +70,19 @@ export function useWeightEntryForDay(
   }, [campaignId, date]);
 }
 
+/**
+ * Most recently logged weight entry for the campaign, any date — used to
+ * prefill the weight picker before today's own entry exists. `undefined`
+ * while loading, `null` once resolved with no weight ever logged.
+ */
+export function useLatestWeightEntry(campaignId: string | undefined): WeightEntry | null | undefined {
+  return useLiveQuery(async () => {
+    if (!campaignId) return undefined;
+    const all = await db.weightEntries.where('campaignId').equals(campaignId).sortBy('date');
+    return all.length > 0 ? all[all.length - 1] : null;
+  }, [campaignId]);
+}
+
 export function useFoodLibrary() {
   return useLiveQuery(() => db.foodItems.orderBy('name').toArray(), []);
 }

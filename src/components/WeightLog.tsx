@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import type { WeightEntry } from '../types';
 import { setWeightEntry } from '../repo';
+import { weightOptions } from '../weightOptions';
 
 interface WeightLogProps {
   campaignId: string;
   date: string;
-  existing: WeightEntry | null;
+  /** Today's already-logged weight if any, else the most recently logged weight, else the campaign's start weight. */
+  defaultWeight: number;
 }
 
 /**
@@ -13,30 +14,27 @@ interface WeightLogProps {
  * component (rather than patching state via an effect) whenever the day or
  * campaign changes, so its initial state is always derived fresh.
  */
-export function WeightLog({ campaignId, date, existing }: WeightLogProps) {
-  const [value, setValue] = useState(existing?.weight?.toString() ?? '');
+export function WeightLog({ campaignId, date, defaultWeight }: WeightLogProps) {
+  const [value, setValue] = useState(defaultWeight);
+  const options = weightOptions(defaultWeight);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const weight = Number(value);
-    if (!weight) return;
-    await setWeightEntry({ campaignId, date, weight });
+    await setWeightEntry({ campaignId, date, weight: value });
   }
 
   return (
     <form className="weight-log" onSubmit={handleSubmit}>
-      <label htmlFor="weight-input">Weight</label>
-      <input
-        id="weight-input"
-        type="number"
-        min="0"
-        step="0.1"
-        placeholder="log today's"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
+      <label htmlFor="weight-select">Weight</label>
+      <select id="weight-select" value={value} onChange={(e) => setValue(Number(e.target.value))}>
+        {options.map((w) => (
+          <option key={w} value={w}>
+            {w.toFixed(1)}
+          </option>
+        ))}
+      </select>
       <button type="submit" className="link-button">
-        Save
+        Update
       </button>
     </form>
   );

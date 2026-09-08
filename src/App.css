@@ -101,8 +101,8 @@
   color: var(--text-secondary);
 }
 
-.weight-log input {
-  width: 5.5rem;
+.weight-log select {
+  width: 6rem;
   padding: 0.3rem 0.5rem;
 }
 
@@ -376,6 +376,16 @@ select {
   font: inherit;
   text-align: left;
   align-self: flex-start;
+}
+
+.remove-icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0.3rem;
+  flex-shrink: 0;
 }
 
 .remove-button {

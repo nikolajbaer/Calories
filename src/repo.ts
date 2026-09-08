@@ -185,6 +185,10 @@ export async function updateExerciseDescription(id: string, description: string)
   await db.exerciseEntries.update(id, { description });
 }
 
+export async function updateExerciseCalories(id: string, caloriesBurned: number): Promise<void> {
+  await db.exerciseEntries.update(id, { caloriesBurned });
+}
+
 // ---------- Weight entries ----------
 
 export async function setWeightEntry(input: {

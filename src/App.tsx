@@ -1,5 +1,11 @@
 import { useEffect } from 'react';
-import { useActiveCampaign, useExerciseEntriesForDay, useFoodEntriesForDay, useWeightEntryForDay } from './hooks';
+import {
+  useActiveCampaign,
+  useExerciseEntriesForDay,
+  useFoodEntriesForDay,
+  useLatestWeightEntry,
+  useWeightEntryForDay,
+} from './hooks';
 import { seedFoodLibraryIfEmpty } from './seed';
 import { todayISO } from './date';
 import { dailyGoal, foodEntryCalories } from './repo';
@@ -22,6 +28,7 @@ function App() {
   const foodEntries = useFoodEntriesForDay(campaign?.id, date);
   const exerciseEntries = useExerciseEntriesForDay(campaign?.id, date);
   const weightEntry = useWeightEntryForDay(campaign?.id, date);
+  const latestWeightEntry = useLatestWeightEntry(campaign?.id);
 
   if (campaign === undefined) {
     return null; // still loading whether there's an active campaign
@@ -35,12 +42,18 @@ function App() {
     );
   }
 
-  if (foodEntries === undefined || exerciseEntries === undefined || weightEntry === undefined) {
+  if (
+    foodEntries === undefined ||
+    exerciseEntries === undefined ||
+    weightEntry === undefined ||
+    latestWeightEntry === undefined
+  ) {
     return null; // campaign is known — still loading its data for today
   }
 
   const eaten = foodEntries.reduce((sum, e) => sum + foodEntryCalories(e), 0);
   const exerciseCalories = exerciseEntries.reduce((sum, e) => sum + e.caloriesBurned, 0);
+  const defaultWeight = weightEntry?.weight ?? latestWeightEntry?.weight ?? campaign.startWeight;
 
   return (
     <div className="app-shell">
@@ -52,7 +65,7 @@ function App() {
         key={`${campaign.id}-${date}`}
         campaignId={campaign.id}
         date={date}
-        existing={weightEntry}
+        defaultWeight={defaultWeight}
       />
 
       <ExercisePanel campaignId={campaign.id} date={date} entries={exerciseEntries} />
