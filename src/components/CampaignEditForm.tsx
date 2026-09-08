@@ -79,7 +79,7 @@ export function CampaignEditForm({ campaign, onDone }: CampaignEditFormProps) {
         <button type="submit" className="primary-button">
           Save changes
         </button>
-        <button type="button" className="link-button" onClick={onDone}>
+        <button type="button" className="secondary-button" onClick={onDone}>
           Cancel
         </button>
       </div>
