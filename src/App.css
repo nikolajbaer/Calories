@@ -212,6 +212,31 @@
 
 .calories-input {
   width: 6rem;
+  flex-shrink: 0;
+}
+
+/* Exercise rows: the add-row and each logged row share this class so their
+   columns (type picker, calories, action button) line up with each other —
+   a fixed-width type picker keeps the calories column from drifting based on
+   which option (e.g. "Gym" vs "Run") happens to be selected. */
+.exercise-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.exercise-type-picker {
+  width: 7.5rem;
+  flex-shrink: 0;
+}
+
+li.exercise-row {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+li.exercise-row:last-child {
+  border-bottom: none;
 }
 
 .autocomplete {
@@ -378,7 +403,7 @@ select {
   align-self: flex-start;
 }
 
-.remove-icon-button {
+.row-icon-button {
   background: none;
   border: none;
   cursor: pointer;

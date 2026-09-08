@@ -35,8 +35,8 @@ export function ExercisePanel({ campaignId, date, entries }: ExercisePanelProps)
         <h2>Exercise</h2>
         {total > 0 && <span className="panel-total">+{total} cal</span>}
       </div>
-      <form className="entry-form-row" onSubmit={handleSubmit}>
-        <ExerciseTypePicker value={type} onChange={setType} />
+      <form className="exercise-row" onSubmit={handleSubmit}>
+        <ExerciseTypePicker className="exercise-type-picker" value={type} onChange={setType} />
         <input
           type="number"
           min="0"
@@ -47,8 +47,8 @@ export function ExercisePanel({ campaignId, date, entries }: ExercisePanelProps)
           className="calories-input"
           required
         />
-        <button type="submit" className="primary-button" aria-label="Add exercise">
-          +
+        <button type="submit" className="row-icon-button" aria-label="Add exercise">
+          ➕
         </button>
       </form>
       {entries.length === 0 ? (
@@ -79,27 +79,29 @@ function ExerciseEntryRow({ entry }: { entry: ExerciseEntry }) {
   }
 
   return (
-    <li className="entry-row">
-      <ExerciseTypePicker value={entry.description} onChange={(v) => updateExerciseDescription(entry.id, v)} />
-      <div className="entry-row-right">
-        <input
-          type="number"
-          min="0"
-          className="calories-input"
-          value={calories}
-          onChange={(e) => setCalories(e.target.value)}
-          onBlur={handleBlur}
-          aria-label="Calories burned"
-        />
-        <button
-          type="button"
-          className="remove-icon-button"
-          aria-label="Remove exercise entry"
-          onClick={() => deleteExerciseEntry(entry.id)}
-        >
-          ⛔
-        </button>
-      </div>
+    <li className="exercise-row">
+      <ExerciseTypePicker
+        className="exercise-type-picker"
+        value={entry.description}
+        onChange={(v) => updateExerciseDescription(entry.id, v)}
+      />
+      <input
+        type="number"
+        min="0"
+        className="calories-input"
+        value={calories}
+        onChange={(e) => setCalories(e.target.value)}
+        onBlur={handleBlur}
+        aria-label="Calories burned"
+      />
+      <button
+        type="button"
+        className="row-icon-button"
+        aria-label="Remove exercise entry"
+        onClick={() => deleteExerciseEntry(entry.id)}
+      >
+        ⛔
+      </button>
     </li>
   );
 }

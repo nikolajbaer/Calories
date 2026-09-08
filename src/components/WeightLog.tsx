@@ -25,8 +25,12 @@ export function WeightLog({ campaignId, date, defaultWeight }: WeightLogProps) {
 
   return (
     <form className="weight-log" onSubmit={handleSubmit}>
-      <label htmlFor="weight-select">Weight</label>
-      <select id="weight-select" value={value} onChange={(e) => setValue(Number(e.target.value))}>
+      <select
+        id="weight-select"
+        aria-label="Weight"
+        value={value}
+        onChange={(e) => setValue(Number(e.target.value))}
+      >
         {options.map((w) => (
           <option key={w} value={w}>
             {w.toFixed(1)}
