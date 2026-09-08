@@ -1,5 +1,5 @@
 import type { ServingUnit } from '../types';
-import { fractionOptions, formatFraction, isFractionalUnit, UNIT_LABELS } from '../quantity';
+import { formatQuantity, fractionOptions, isFractionalUnit } from '../quantity';
 
 const REMOVE = '__remove__';
 
@@ -27,7 +27,7 @@ export function QuantityPicker({ unit, quantity, onChange, onRemove, className }
       <select aria-label="Quantity" className={className} value={quantity} onChange={(e) => handleSelect(e.target.value)}>
         {options.map((q) => (
           <option key={q} value={q}>
-            {formatFraction(q)} {UNIT_LABELS[unit]}
+            {formatQuantity(q, unit)}
           </option>
         ))}
         {onRemove && <option value={REMOVE}>Remove</option>}

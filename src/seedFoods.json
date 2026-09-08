@@ -1,622 +1,932 @@
 [
   {
     "name": "almond croissant",
-    "calories": 500.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 500
   },
   {
     "name": "boiled egg",
-    "calories": 80.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 80
   },
   {
-    "name": "1/2 cup oatmeal",
-    "calories": 80.0
+    "name": "oatmeal",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 80
   },
   {
-    "name": "1/2 cup milk",
-    "calories": 80.0
+    "name": "milk",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 80
   },
   {
-    "name": "1/2 cup plain yogurt",
-    "calories": 75.0
+    "name": "plain yogurt",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 75
   },
   {
-    "name": "1/4 cup almonds",
-    "calories": 162.0
+    "name": "almonds",
+    "servingSize": 0.25,
+    "servingUnit": "cup",
+    "calories": 162
   },
   {
-    "name": "1 tbsp honey",
-    "calories": 64.0
+    "name": "honey",
+    "servingSize": 1,
+    "servingUnit": "tbsp",
+    "calories": 64
   },
   {
     "name": "apple",
-    "calories": 95.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 95
   },
   {
     "name": "beer",
-    "calories": 200.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 200
   },
   {
-    "name": "2 oz cheese",
-    "calories": 225.0
+    "name": "cheese",
+    "servingSize": 2,
+    "servingUnit": "oz",
+    "calories": 225
   },
   {
     "name": "carrot",
-    "calories": 25.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 25
   },
   {
-    "name": "1 cup chili",
-    "calories": 264.0
+    "name": "chili",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 264
   },
   {
     "name": "salad with blue cheese and dressing",
-    "calories": 250.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 250
   },
   {
     "name": "14 tortilla chips",
-    "calories": 140.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 140
   },
   {
-    "name": "1/4 cup shredded cheese",
-    "calories": 140.0
+    "name": "shredded cheese",
+    "servingSize": 0.25,
+    "servingUnit": "cup",
+    "calories": 140
   },
   {
-    "name": "1/2 cup chili",
-    "calories": 132.0
+    "name": "chili",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 132
   },
   {
-    "name": "1 tbsp raisins",
-    "calories": 60.0
+    "name": "raisins",
+    "servingSize": 1,
+    "servingUnit": "tbsp",
+    "calories": 60
   },
   {
-    "name": "1/2 cup soy milk",
-    "calories": 40.0
+    "name": "soy milk",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 40
   },
   {
     "name": "tuna packet",
-    "calories": 70.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 70
   },
   {
-    "name": "1 tbsp mayo",
-    "calories": 90.0
+    "name": "mayo",
+    "servingSize": 1,
+    "servingUnit": "tbsp",
+    "calories": 90
   },
   {
-    "name": "slice of bread",
-    "calories": 100.0
+    "name": "bread",
+    "servingSize": 1,
+    "servingUnit": "slice",
+    "calories": 100
   },
   {
-    "name": "1/2 cup blueberries",
-    "calories": 45.0
+    "name": "blueberries",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 45
   },
   {
     "name": "small taco",
-    "calories": 200.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 200
   },
   {
-    "name": "4 oz turkey lunch meat",
-    "calories": 100.0
+    "name": "turkey lunch meat",
+    "servingSize": 4,
+    "servingUnit": "oz",
+    "calories": 100
   },
   {
-    "name": "3 slices bacon",
-    "calories": 130.0
+    "name": "bacon",
+    "servingSize": 3,
+    "servingUnit": "slice",
+    "calories": 130
   },
   {
     "name": "BR protein pancakes",
-    "calories": 386.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 386
   },
   {
-    "name": "1/4 cup walnuts",
-    "calories": 196.0
+    "name": "walnuts",
+    "servingSize": 0.25,
+    "servingUnit": "cup",
+    "calories": 196
   },
   {
-    "name": "1 cup spaghetti",
-    "calories": 200.0
+    "name": "spaghetti",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 200
   },
   {
-    "name": "1/2 cup ragu",
-    "calories": 245.0
+    "name": "ragu",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 245
   },
   {
-    "name": "1/2 cup pasta",
-    "calories": 100.0
+    "name": "pasta",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 100
   },
   {
     "name": "Chocolate",
-    "calories": 100.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 100
   },
   {
     "name": "English muffin",
-    "calories": 150.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 150
   },
   {
-    "name": "1 tbsp butter",
-    "calories": 100.0
+    "name": "butter",
+    "servingSize": 1,
+    "servingUnit": "tbsp",
+    "calories": 100
   },
   {
     "name": "Dijon chicken",
-    "calories": 275.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 275
   },
   {
     "name": "small potato",
-    "calories": 130.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 130
   },
   {
-    "name": "1/2 cup corn",
-    "calories": 90.0
+    "name": "corn",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 90
   },
   {
-    "name": "1 tbsp butter",
-    "calories": 100.0
+    "name": "butter",
+    "servingSize": 1,
+    "servingUnit": "tbsp",
+    "calories": 100
   },
   {
-    "name": "1 cup beef lasagna",
-    "calories": 402.0
+    "name": "beef lasagna",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 402
   },
   {
-    "name": "1/2 cup chicken breast",
-    "calories": 130.0
+    "name": "chicken breast",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 130
   },
   {
-    "name": "1/2 cup rotisserie chicken",
-    "calories": 160.0
+    "name": "rotisserie chicken",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 160
   },
   {
     "name": "Lindor",
-    "calories": 75.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 75
   },
   {
     "name": "1/2 avocado",
-    "calories": 120.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 120
   },
   {
-    "name": "1/2 cup fat free cottage cheese",
-    "calories": 80.0
+    "name": "fat free cottage cheese",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 80
   },
   {
-    "name": "1 tbsp lemon curd",
-    "calories": 60.0
+    "name": "lemon curd",
+    "servingSize": 1,
+    "servingUnit": "tbsp",
+    "calories": 60
   },
   {
     "name": "2 egg whites",
-    "calories": 35.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 35
   },
   {
     "name": "chocolate chip cookie",
-    "calories": 100.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 100
   },
   {
-    "name": "1/2 cup cooked rice",
-    "calories": 106.0
+    "name": "cooked rice",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 106
   },
   {
-    "name": "1/2 cup almond milk",
-    "calories": 15.0
+    "name": "almond milk",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 15
   },
   {
-    "name": "1 cup quinoa stew",
-    "calories": 150.0
+    "name": "quinoa stew",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 150
   },
   {
     "name": "hot dog and bun",
-    "calories": 270.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 270
   },
   {
-    "name": "1/2 cup frozen mango",
-    "calories": 45.0
+    "name": "frozen mango",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 45
   },
   {
-    "name": "1 cup Shepard's Pie",
-    "calories": 346.0
+    "name": "Shepard's Pie",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 346
   },
   {
     "name": "bagel",
-    "calories": 245.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 245
   },
   {
-    "name": "slice of pizza",
-    "calories": 285.0
+    "name": "pizza",
+    "servingSize": 1,
+    "servingUnit": "slice",
+    "calories": 285
   },
   {
-    "name": "slice of banana bread",
-    "calories": 200.0
+    "name": "banana bread",
+    "servingSize": 1,
+    "servingUnit": "slice",
+    "calories": 200
   },
   {
     "name": "California Roll",
-    "calories": 254.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 254
   },
   {
     "name": "spicy tuna roll",
-    "calories": 300.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 300
   },
   {
-    "name": "8 oz steak",
-    "calories": 600.0
+    "name": "steak",
+    "servingSize": 8,
+    "servingUnit": "oz",
+    "calories": 600
   },
   {
     "name": "slice sandwich cheese",
-    "calories": 90.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 90
   },
   {
     "name": "French fries",
-    "calories": 350.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 350
   },
   {
     "name": "eggs Benedict",
-    "calories": 600.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 600
   },
   {
-    "name": "1 cup hash browns",
-    "calories": 470.0
+    "name": "hash browns",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 470
   },
   {
     "name": "ice pop",
-    "calories": 60.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 60
   },
   {
-    "name": "1 cup puffed kamut",
-    "calories": 80.0
+    "name": "puffed kamut",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 80
   },
   {
-    "name": "1/4 cup granola",
-    "calories": 135.0
+    "name": "granola",
+    "servingSize": 0.25,
+    "servingUnit": "cup",
+    "calories": 135
   },
   {
-    "name": "1/2 cup berries",
-    "calories": 30.0
+    "name": "berries",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 30
   },
   {
     "name": "pb cracker pack",
-    "calories": 160.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 160
   },
   {
-    "name": "3oz ice cream (small scoop)",
-    "calories": 180.0
+    "name": "ice cream (small scoop)",
+    "servingSize": 3,
+    "servingUnit": "oz",
+    "calories": 180
   },
   {
-    "name": "200g veg quiche",
-    "calories": 400.0
+    "name": "veg quiche",
+    "servingSize": 200,
+    "servingUnit": "g",
+    "calories": 400
   },
   {
     "name": "chobani",
-    "calories": 130.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 130
   },
   {
-    "name": "1 cup grapes",
-    "calories": 60.0
+    "name": "grapes",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 60
   },
   {
     "name": "sandwich bread",
-    "calories": 140.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 140
   },
   {
     "name": "chicken can",
-    "calories": 150.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 150
   },
   {
-    "name": "egg fried rice 1 cup",
-    "calories": 250.0
+    "name": "egg fried rice",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 250
   },
   {
     "name": "10 Ritz crackers",
-    "calories": 160.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 160
   },
   {
     "name": "1\" cheese cube",
-    "calories": 70.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 70
   },
   {
     "name": "1/4 lb beef patty",
-    "calories": 290.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 290
   },
   {
-    "name": "1/4 cup guacamole",
-    "calories": 91.0
+    "name": "guacamole",
+    "servingSize": 0.25,
+    "servingUnit": "cup",
+    "calories": 91
   },
   {
     "name": "cheese stick",
-    "calories": 80.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 80
   },
   {
-    "name": "8oz tuna steak",
-    "calories": 250.0
+    "name": "tuna steak",
+    "servingSize": 8,
+    "servingUnit": "oz",
+    "calories": 250
   },
   {
     "name": "blueberry muffin",
-    "calories": 450.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 450
   },
   {
-    "name": "100g veggie quiche",
-    "calories": 250.0
+    "name": "veggie quiche",
+    "servingSize": 100,
+    "servingUnit": "g",
+    "calories": 250
   },
   {
     "name": "shorehouse burrito",
-    "calories": 600.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 600
   },
   {
-    "name": "tortellini 1 cup",
-    "calories": 250.0
+    "name": "tortellini",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 250
   },
   {
-    "name": "sandwich cookies (2)",
-    "calories": 120.0
+    "name": "sandwich cookies",
+    "servingSize": 2,
+    "servingUnit": "piece",
+    "calories": 120
   },
   {
     "name": "fish taco",
-    "calories": 350.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 350
   },
   {
     "name": "baklava",
-    "calories": 180.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 180
   },
   {
     "name": "1/2 Italian sausage",
-    "calories": 200.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 200
   },
   {
-    "name": "1/4 cup hashbrowns",
-    "calories": 150.0
+    "name": "hashbrowns",
+    "servingSize": 0.25,
+    "servingUnit": "cup",
+    "calories": 150
   },
   {
     "name": "can of tuna",
-    "calories": 120.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 120
   },
   {
     "name": "carne asada taco",
-    "calories": 250.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 250
   },
   {
     "name": "Ritz crackers pack PB",
-    "calories": 200.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 200
   },
   {
-    "name": "1 cup tuna risotto",
-    "calories": 220.0
+    "name": "tuna risotto",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 220
   },
   {
-    "name": "1 cup shrimp and grits",
-    "calories": 350.0
+    "name": "shrimp and grits",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 350
   },
   {
     "name": "2 wasa eye crackers",
-    "calories": 40.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 40
   },
   {
     "name": "1 French toast slice",
-    "calories": 150.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 150
   },
   {
-    "name": "2 tbsp hummis",
-    "calories": 80.0
+    "name": "hummis",
+    "servingSize": 2,
+    "servingUnit": "tbsp",
+    "calories": 80
   },
   {
-    "name": "100g pizza",
-    "calories": 275.0
+    "name": "pizza",
+    "servingSize": 100,
+    "servingUnit": "g",
+    "calories": 275
   },
   {
     "name": "Taco Bell taco",
-    "calories": 170.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 170
   },
   {
     "name": "pan fried fish 80z",
-    "calories": 350.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 350
   },
   {
     "name": "gyro",
-    "calories": 650.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 650
   },
   {
     "name": "soyrizo burrito",
-    "calories": 400.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 400
   },
   {
-    "name": "3/4 cup oats",
-    "calories": 225.0
+    "name": "oats",
+    "servingSize": 0.75,
+    "servingUnit": "cup",
+    "calories": 225
   },
   {
-    "name": "1/2 cup dal",
-    "calories": 150.0
+    "name": "dal",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 150
   },
   {
-    "name": "1/2 cup hash browns",
-    "calories": 230.0
+    "name": "hash browns",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 230
   },
   {
-    "name": "1/2 cup homemade Mac and cheese",
-    "calories": 255.0
+    "name": "homemade Mac and cheese",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 255
   },
   {
-    "name": "1 tbsp peanut butter",
-    "calories": 90.0
+    "name": "peanut butter",
+    "servingSize": 1,
+    "servingUnit": "tbsp",
+    "calories": 90
   },
   {
-    "name": "1 tbsp jam",
-    "calories": 50.0
+    "name": "jam",
+    "servingSize": 1,
+    "servingUnit": "tbsp",
+    "calories": 50
   },
   {
-    "name": "1 cup spinach ricotta lasagna",
-    "calories": 350.0
+    "name": "spinach ricotta lasagna",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 350
   },
   {
     "name": "granola bar",
-    "calories": 190.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 190
   },
   {
     "name": "meatball sub",
-    "calories": 950.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 950
   },
   {
     "name": "protein shake",
-    "calories": 160.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 160
   },
   {
-    "name": "shrimp 1 cup",
-    "calories": 100.0
+    "name": "shrimp",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 100
   },
   {
     "name": "athletic beer",
-    "calories": 65.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 65
   },
   {
     "name": "gyro",
-    "calories": 500.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 500
   },
   {
     "name": "oikos triple zero",
-    "calories": 120.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 120
   },
   {
     "name": "bahn mi",
-    "calories": 650.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 650
   },
   {
     "name": "slim jim",
-    "calories": 100.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 100
   },
   {
     "name": "lemon tart small",
-    "calories": 250.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 250
   },
   {
     "name": "breakfast sausage",
-    "calories": 60.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 60
   },
   {
-    "name": "gyoza (3)",
-    "calories": 180.0
+    "name": "gyoza",
+    "servingSize": 3,
+    "servingUnit": "piece",
+    "calories": 180
   },
   {
     "name": "mini scone",
-    "calories": 150.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 150
   },
   {
-    "name": "1 tbsp olive oil",
-    "calories": 120.0
+    "name": "olive oil",
+    "servingSize": 1,
+    "servingUnit": "tbsp",
+    "calories": 120
   },
   {
-    "name": "broccoli 1 cup",
-    "calories": 30.0
+    "name": "broccoli",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 30
   },
   {
-    "name": "pad Thai 1 cup",
-    "calories": 350.0
+    "name": "pad Thai",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 350
   },
   {
     "name": "fresh spring roll",
-    "calories": 150.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 150
   },
   {
-    "name": "bbq pulled pork 1/2 cup",
-    "calories": 230.0
+    "name": "bbq pulled pork",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 230
   },
   {
-    "name": "sweet potato roasted with oil 1/2 cup",
-    "calories": 100.0
+    "name": "sweet potato roasted with oil",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 100
   },
   {
-    "name": "coleslaw 1/2 cup",
-    "calories": 125.0
+    "name": "coleslaw",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 125
   },
   {
     "name": "small slice of pie",
-    "calories": 250.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 250
   },
   {
     "name": "sliver of pie",
-    "calories": 150.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 150
   },
   {
     "name": "1/2 burrito",
-    "calories": 400.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 400
   },
   {
     "name": "fried egg",
-    "calories": 100.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 100
   },
   {
-    "name": "butter chicken 1 cup",
-    "calories": 450.0
+    "name": "butter chicken",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 450
   },
   {
     "name": "breakfast burrito",
-    "calories": 600.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 600
   },
   {
-    "name": "roast beef cold cuts 4oz",
-    "calories": 200.0
+    "name": "roast beef cold cuts",
+    "servingSize": 4,
+    "servingUnit": "oz",
+    "calories": 200
   },
   {
-    "name": "olives 1/4 cup",
-    "calories": 50.0
+    "name": "olives",
+    "servingSize": 0.25,
+    "servingUnit": "cup",
+    "calories": 50
   },
   {
-    "name": "cream 1/4 cup",
-    "calories": 200.0
+    "name": "cream",
+    "servingSize": 0.25,
+    "servingUnit": "cup",
+    "calories": 200
   },
   {
-    "name": "cream cheese 1/4 cup",
-    "calories": 175.0
+    "name": "cream cheese",
+    "servingSize": 0.25,
+    "servingUnit": "cup",
+    "calories": 175
   },
   {
-    "name": "Bolognese sauce 1/2 cup",
-    "calories": 200.0
+    "name": "Bolognese sauce",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 200
   },
   {
     "name": "hamburger",
-    "calories": 500.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 500
   },
   {
-    "name": "onion rings 1 cup",
-    "calories": 450.0
+    "name": "onion rings",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 450
   },
   {
-    "name": "roast beef 8oz",
-    "calories": 400.0
+    "name": "roast beef",
+    "servingSize": 8,
+    "servingUnit": "oz",
+    "calories": 400
   },
   {
-    "name": "ham and bean soup 1 cup",
-    "calories": 200.0
+    "name": "ham and bean soup",
+    "servingSize": 1,
+    "servingUnit": "cup",
+    "calories": 200
   },
   {
-    "name": "alfredo 1/4 cup",
-    "calories": 200.0
+    "name": "alfredo",
+    "servingSize": 0.25,
+    "servingUnit": "cup",
+    "calories": 200
   },
   {
     "name": "fish taco",
-    "calories": 330.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 330
   },
   {
     "name": "mini slim jim",
-    "calories": 45.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 45
   },
   {
     "name": "CHEAT DAY",
-    "calories": 2000.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 2000
   },
   {
     "name": "bag of chips",
-    "calories": 150.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 150
   },
   {
     "name": "frozen fruit bar",
-    "calories": 150.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 150
   },
   {
     "name": "chicken burrito",
-    "calories": 700.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 700
   },
   {
     "name": "1/2 donut",
-    "calories": 150.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 150
   },
   {
-    "name": "slice of cake",
-    "calories": 250.0
+    "name": "cake",
+    "servingSize": 1,
+    "servingUnit": "slice",
+    "calories": 250
   },
   {
     "name": "acai",
-    "calories": 250.0
+    "servingSize": 1,
+    "servingUnit": "serving",
+    "calories": 250
   },
   {
-    "name": "refried beans 1/2 cup",
-    "calories": 140.0
+    "name": "refried beans",
+    "servingSize": 0.5,
+    "servingUnit": "cup",
+    "calories": 140
   }
 ]
