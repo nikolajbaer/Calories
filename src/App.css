@@ -169,6 +169,10 @@
   align-items: center;
 }
 
+.campaign-edit-actions .primary-button {
+  align-self: center;
+}
+
 /* ---------- Weight log ---------- */
 
 .weight-log {
@@ -479,7 +483,6 @@ select {
 }
 
 .secondary-button {
-  align-self: flex-start;
   background: none;
   border: 1px solid var(--border);
   color: var(--text-primary);
