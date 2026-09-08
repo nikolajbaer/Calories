@@ -186,13 +186,19 @@ export function foodEntryCholesterol(entry: FoodEntry): number {
  * Bundles a set of today's food entries into a single reusable FoodItem —
  * e.g. turn "oatmeal + apple + bacon" into one "Breakfast" library entry with
  * their combined calories/protein/cholesterol. Only adds to the library; the
- * source entries are left exactly as logged.
+ * source entries are left exactly as logged. Pass existingId to update an
+ * existing library item in place instead of creating a new one.
  */
-export async function createMealFromEntries(name: string, entries: FoodEntry[]): Promise<FoodItem> {
+export async function createMealFromEntries(
+  name: string,
+  entries: FoodEntry[],
+  existingId?: string,
+): Promise<FoodItem> {
   const calories = entries.reduce((sum, e) => sum + foodEntryCalories(e), 0);
   const proteinG = entries.reduce((sum, e) => sum + foodEntryProtein(e), 0);
   const cholesterolMg = entries.reduce((sum, e) => sum + foodEntryCholesterol(e), 0);
   return upsertFoodItem({
+    id: existingId,
     name,
     servingSize: 1,
     servingUnit: 'serving',
@@ -200,6 +206,14 @@ export async function createMealFromEntries(name: string, entries: FoodEntry[]):
     proteinG,
     cholesterolMg,
   });
+}
+
+/** Case-insensitive exact match on food item name, for duplicate detection before saving. */
+export async function findFoodItemByName(name: string): Promise<FoodItem | undefined> {
+  const trimmed = name.trim().toLowerCase();
+  if (!trimmed) return undefined;
+  const all = await db.foodItems.toArray();
+  return all.find((f) => f.name.trim().toLowerCase() === trimmed);
 }
 
 // ---------- Exercise entries ----------

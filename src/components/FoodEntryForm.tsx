@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { FoodItem, ServingUnit } from '../types';
 import {
   addFoodEntryFromLibraryItem,
+  findFoodItemByName,
   searchFoodItems,
   upsertFoodItem,
 } from '../repo';
@@ -75,7 +76,15 @@ export function FoodEntryForm({ campaignId, date, onAdded }: FoodEntryFormProps)
       const calories = Number(newFood.calories);
       const servingSize = Number(newFood.servingSize);
       if (!query.trim() || !calories || !servingSize) return;
+      const existing = await findFoodItemByName(query);
+      if (existing) {
+        const confirmed = confirm(
+          `"${existing.name}" already exists (${Math.round(existing.calories)} cal) — update it with these new values instead of creating a duplicate?`,
+        );
+        if (!confirmed) return;
+      }
       const food = await upsertFoodItem({
+        id: existing?.id,
         name: query,
         servingSize,
         servingUnit: newFood.servingUnit,

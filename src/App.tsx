@@ -8,7 +8,7 @@ import {
 } from './hooks';
 import { seedFoodLibraryIfEmpty } from './seed';
 import { addDays, todayISO } from './date';
-import { createMealFromEntries, dailyGoal, foodEntryCalories } from './repo';
+import { createMealFromEntries, dailyGoal, findFoodItemByName, foodEntryCalories } from './repo';
 import type { Campaign } from './types';
 import { CampaignSetupForm } from './components/CampaignSetupForm';
 import { CampaignHeader } from './components/CampaignHeader';
@@ -86,7 +86,14 @@ function DayView({ campaign }: { campaign: Campaign }) {
   const handleSaveMeal = async (name: string) => {
     const selected = foodEntries.filter((e) => selectedIds.has(e.id));
     if (selected.length === 0) return;
-    await createMealFromEntries(name, selected);
+    const existing = await findFoodItemByName(name);
+    if (existing) {
+      const confirmed = confirm(
+        `"${existing.name}" already exists (${Math.round(existing.calories)} cal) — update it with these new values instead of creating a duplicate?`,
+      );
+      if (!confirmed) return;
+    }
+    await createMealFromEntries(name, selected, existing?.id);
     exitMealMode();
   };
 
