@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   useActiveCampaign,
   useExerciseEntriesForDay,
@@ -7,8 +7,9 @@ import {
   useWeightEntryForDay,
 } from './hooks';
 import { seedFoodLibraryIfEmpty } from './seed';
-import { todayISO } from './date';
+import { addDays, todayISO } from './date';
 import { dailyGoal, foodEntryCalories } from './repo';
+import type { Campaign } from './types';
 import { CampaignSetupForm } from './components/CampaignSetupForm';
 import { CampaignHeader } from './components/CampaignHeader';
 import { ProgressMeter } from './components/ProgressMeter';
@@ -24,11 +25,6 @@ function App() {
   }, []);
 
   const campaign = useActiveCampaign();
-  const date = todayISO();
-  const foodEntries = useFoodEntriesForDay(campaign?.id, date);
-  const exerciseEntries = useExerciseEntriesForDay(campaign?.id, date);
-  const weightEntry = useWeightEntryForDay(campaign?.id, date);
-  const latestWeightEntry = useLatestWeightEntry(campaign?.id);
 
   if (campaign === undefined) {
     return null; // still loading whether there's an active campaign
@@ -42,13 +38,26 @@ function App() {
     );
   }
 
+  // Keying on campaign.id remounts DayView (fresh viewedDate = today) whenever
+  // the active campaign changes, instead of syncing that state via an effect.
+  return <DayView key={campaign.id} campaign={campaign} />;
+}
+
+function DayView({ campaign }: { campaign: Campaign }) {
+  const [viewedDate, setViewedDate] = useState(todayISO());
+
+  const foodEntries = useFoodEntriesForDay(campaign.id, viewedDate);
+  const exerciseEntries = useExerciseEntriesForDay(campaign.id, viewedDate);
+  const weightEntry = useWeightEntryForDay(campaign.id, viewedDate);
+  const latestWeightEntry = useLatestWeightEntry(campaign.id);
+
   if (
     foodEntries === undefined ||
     exerciseEntries === undefined ||
     weightEntry === undefined ||
     latestWeightEntry === undefined
   ) {
-    return null; // campaign is known — still loading its data for today
+    return null; // still loading this day's data
   }
 
   const eaten = foodEntries.reduce((sum, e) => sum + foodEntryCalories(e), 0);
@@ -57,25 +66,30 @@ function App() {
 
   return (
     <div className="app-shell">
-      <CampaignHeader campaign={campaign} date={date} />
+      <CampaignHeader
+        campaign={campaign}
+        date={viewedDate}
+        onNavigate={(deltaDays) => setViewedDate((d) => addDays(d, deltaDays))}
+        onToday={() => setViewedDate(todayISO())}
+      />
 
       <ProgressMeter eaten={eaten} goal={dailyGoal(campaign)} exerciseCalories={exerciseCalories} />
 
       <WeightLog
-        key={`${campaign.id}-${date}`}
+        key={`${campaign.id}-${viewedDate}`}
         campaignId={campaign.id}
-        date={date}
+        date={viewedDate}
         defaultWeight={defaultWeight}
       />
 
-      <ExercisePanel campaignId={campaign.id} date={date} entries={exerciseEntries} />
+      <ExercisePanel campaignId={campaign.id} date={viewedDate} entries={exerciseEntries} />
 
       <section className="panel">
         <div className="panel-header">
           <h2>Food</h2>
           <span className="panel-total">{Math.round(eaten)} cal</span>
         </div>
-        <FoodEntryForm campaignId={campaign.id} date={date} onAdded={() => {}} />
+        <FoodEntryForm campaignId={campaign.id} date={viewedDate} onAdded={() => {}} />
         <FoodEntryList entries={foodEntries} />
       </section>
     </div>

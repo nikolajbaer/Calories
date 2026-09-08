@@ -30,6 +30,13 @@ export function formatShortDate(iso: string): string {
   });
 }
 
+export function addDays(iso: string, delta: number): string {
+  const [year, month, day] = iso.split('-').map(Number);
+  const d = new Date(year, month - 1, day);
+  d.setDate(d.getDate() + delta);
+  return toISODate(d);
+}
+
 /** 1-indexed day number within the campaign (start date is day 1). */
 export function dayNumber(startDateISO: string, currentISO: string): number {
   const [sy, sm, sd] = startDateISO.split('-').map(Number);
