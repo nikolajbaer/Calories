@@ -22,6 +22,7 @@ export function FoodEntryForm({ campaignId, date, onAdded }: FoodEntryFormProps)
   const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [showNewFoodForm, setShowNewFoodForm] = useState(false);
+  const [showNutritionDetails, setShowNutritionDetails] = useState(false);
   const [newFood, setNewFood] = useState({
     servingSize: '1',
     servingUnit: 'serving' as ServingUnit,
@@ -56,6 +57,7 @@ export function FoodEntryForm({ campaignId, date, onAdded }: FoodEntryFormProps)
     setSelectedFood(null);
     setQuantity(1);
     setShowNewFoodForm(false);
+    setShowNutritionDetails(false);
     setNewFood({ servingSize: '1', servingUnit: 'serving', calories: '', proteinG: '', cholesterolMg: '' });
     inputRef.current?.focus();
   }
@@ -187,26 +189,38 @@ export function FoodEntryForm({ campaignId, date, onAdded }: FoodEntryFormProps)
               required
             />
           </label>
-          <label>
-            Protein (g)
-            <input
-              type="number"
-              min="0"
-              step="any"
-              value={newFood.proteinG}
-              onChange={(e) => setNewFood({ ...newFood, proteinG: e.target.value })}
-            />
-          </label>
-          <label>
-            Cholesterol (mg)
-            <input
-              type="number"
-              min="0"
-              step="any"
-              value={newFood.cholesterolMg}
-              onChange={(e) => setNewFood({ ...newFood, cholesterolMg: e.target.value })}
-            />
-          </label>
+          {showNutritionDetails ? (
+            <>
+              <label>
+                Protein (g)
+                <input
+                  type="number"
+                  min="0"
+                  step="any"
+                  value={newFood.proteinG}
+                  onChange={(e) => setNewFood({ ...newFood, proteinG: e.target.value })}
+                />
+              </label>
+              <label>
+                Cholesterol (mg)
+                <input
+                  type="number"
+                  min="0"
+                  step="any"
+                  value={newFood.cholesterolMg}
+                  onChange={(e) => setNewFood({ ...newFood, cholesterolMg: e.target.value })}
+                />
+              </label>
+            </>
+          ) : (
+            <button
+              type="button"
+              className="link-button new-food-details-toggle"
+              onClick={() => setShowNutritionDetails(true)}
+            >
+              + Add protein / cholesterol
+            </button>
+          )}
         </div>
       )}
     </form>

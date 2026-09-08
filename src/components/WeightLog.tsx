@@ -37,7 +37,7 @@ export function WeightLog({ campaignId, date, defaultWeight }: WeightLogProps) {
           </option>
         ))}
       </select>
-      <button type="submit" className="link-button">
+      <button type="submit" className="small-button">
         Update
       </button>
     </form>

@@ -1,18 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Campaign } from '../types';
-import { endCampaign, resumeCampaign } from '../repo';
+import { deleteCampaign, endCampaign, resumeCampaign } from '../repo';
 import { useEndedCampaigns } from '../hooks';
 import { formatShortDate, dayNumber, todayISO } from '../date';
+import { formatProjection, projectedDaysToGoal } from '../projection';
 import { CampaignEditForm } from './CampaignEditForm';
 
 interface CampaignHeaderProps {
   campaign: Campaign;
   date: string;
+  latestWeight: number;
   onNavigate: (deltaDays: number) => void;
   onToday: () => void;
 }
 
-export function CampaignHeader({ campaign, date, onNavigate, onToday }: CampaignHeaderProps) {
+export function CampaignHeader({ campaign, date, latestWeight, onNavigate, onToday }: CampaignHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [editing, setEditing] = useState(false);
   const endedCampaigns = useEndedCampaigns();
@@ -30,6 +32,7 @@ export function CampaignHeader({ campaign, date, onNavigate, onToday }: Campaign
   }, [menuOpen]);
 
   const isToday = date === todayISO();
+  const daysToGoal = projectedDaysToGoal(latestWeight, campaign.targetWeight, campaign.deficitTarget);
 
   return (
     <header className="app-header">
@@ -44,8 +47,12 @@ export function CampaignHeader({ campaign, date, onNavigate, onToday }: Campaign
           >
             ‹
           </button>
-          <span className="app-header-date">
-            {formatShortDate(date)} · Day {dayNumber(campaign.startDate, date)}
+          <span className="app-header-date-group">
+            <span className="app-header-date">{formatShortDate(date)}</span>
+            {daysToGoal !== null && (
+              <span className="header-projection">({formatProjection(daysToGoal)} left)</span>
+            )}
+            <span className="app-header-date">· Day {dayNumber(campaign.startDate, date)}</span>
           </span>
           <button
             type="button"
@@ -65,7 +72,7 @@ export function CampaignHeader({ campaign, date, onNavigate, onToday }: Campaign
         <div className="menu-wrap" ref={menuRef}>
           <button
             type="button"
-            className="icon-button menu-trigger"
+            className="menu-trigger"
             aria-label="Campaign menu"
             onClick={() => setMenuOpen((s) => !s)}
           >
@@ -93,21 +100,55 @@ export function CampaignHeader({ campaign, date, onNavigate, onToday }: Campaign
               >
                 End campaign
               </button>
+              <button
+                type="button"
+                className="danger-item"
+                onClick={async () => {
+                  setMenuOpen(false);
+                  if (
+                    confirm(
+                      'Delete this campaign and all its logged food, exercise, and weight entries? This cannot be undone.',
+                    )
+                  ) {
+                    await deleteCampaign(campaign.id);
+                  }
+                }}
+              >
+                Delete campaign
+              </button>
               {endedCampaigns && endedCampaigns.length > 0 && (
                 <>
                   <div className="dropdown-divider" />
-                  <div className="dropdown-label">Resume a past campaign</div>
+                  <div className="dropdown-label">Past campaigns</div>
                   {endedCampaigns.map((c) => (
-                    <button
-                      type="button"
-                      key={c.id}
-                      onClick={() => {
-                        setMenuOpen(false);
-                        resumeCampaign(c.id);
-                      }}
-                    >
-                      {c.startWeight} → {c.targetWeight} lb ({c.startDate} to {c.endDate})
-                    </button>
+                    <div className="dropdown-row" key={c.id}>
+                      <button
+                        type="button"
+                        className="dropdown-row-main"
+                        onClick={() => {
+                          setMenuOpen(false);
+                          resumeCampaign(c.id);
+                        }}
+                      >
+                        {c.startWeight} → {c.targetWeight} lb ({c.startDate} to {c.endDate})
+                      </button>
+                      <button
+                        type="button"
+                        className="row-icon-button"
+                        aria-label="Delete this campaign"
+                        onClick={async () => {
+                          if (
+                            confirm(
+                              'Delete this campaign and all its logged food, exercise, and weight entries? This cannot be undone.',
+                            )
+                          ) {
+                            await deleteCampaign(c.id);
+                          }
+                        }}
+                      >
+                        ⛔
+                      </button>
+                    </div>
                   ))}
                 </>
               )}

@@ -19,10 +19,30 @@
   align-items: center;
 }
 
+.app-header-date-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
 .app-header-date {
   font-weight: 600;
   font-size: 1rem;
   white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.header-projection {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex-shrink: 1;
 }
 
 .date-nav {
@@ -30,6 +50,7 @@
   align-items: center;
   gap: 0.3rem;
   min-width: 0;
+  flex: 1 1 auto;
 }
 
 .nav-arrow {
@@ -58,9 +79,14 @@
 }
 
 .menu-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
   font-size: 1.2rem;
   line-height: 1;
-  padding: 0.2rem 0.6rem;
+  padding: 0.2rem 0.4rem;
+  flex-shrink: 0;
 }
 
 .dropdown-menu {
@@ -106,6 +132,31 @@
   padding: 0.3rem 0.6rem;
 }
 
+.danger-item {
+  color: var(--status-critical);
+}
+
+.dropdown-row {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.dropdown-row-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-menu .row-icon-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.3rem;
+}
+
 .campaign-edit-form {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
@@ -116,6 +167,10 @@
   display: flex;
   gap: 1rem;
   align-items: center;
+}
+
+.campaign-edit-actions .primary-button {
+  align-self: center;
 }
 
 /* ---------- Weight log ---------- */
@@ -211,6 +266,17 @@
   color: var(--text-secondary);
   font-variant-numeric: tabular-nums;
   font-size: 0.9rem;
+}
+
+.panel-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.library-search {
+  width: 100%;
+  margin: 0.75rem 0;
 }
 
 /* ---------- Forms ---------- */
@@ -345,6 +411,11 @@ li.exercise-row:last-child {
   color: var(--text-secondary);
 }
 
+.new-food-details-toggle {
+  grid-column: 1 / -1;
+  font-size: 0.8rem;
+}
+
 input,
 select {
   font: inherit;
@@ -412,7 +483,6 @@ select {
 }
 
 .secondary-button {
-  align-self: flex-start;
   background: none;
   border: 1px solid var(--border);
   color: var(--text-primary);
@@ -429,7 +499,17 @@ select {
   padding: 0;
   font: inherit;
   text-align: left;
-  align-self: flex-start;
+}
+
+.small-button {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  flex-shrink: 0;
 }
 
 .row-icon-button {
@@ -440,23 +520,6 @@ select {
   line-height: 1;
   padding: 0.3rem;
   flex-shrink: 0;
-}
-
-.remove-button {
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--status-critical);
-  cursor: pointer;
-  padding: 0.5rem 0.7rem;
-  border-radius: 8px;
-  font: inherit;
-  font-size: 0.85rem;
-}
-
-.quantity-with-remove {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
 }
 
 /* ---------- Data rows ---------- */
