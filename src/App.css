@@ -13,22 +13,36 @@
   border-bottom: 1px solid var(--border);
 }
 
-.goal-projection {
-  margin: 0.35rem 0 0;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-}
-
 .app-header-line {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.app-header-date-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
 .app-header-date {
   font-weight: 600;
   font-size: 1rem;
   white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.header-projection {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex-shrink: 1;
 }
 
 .date-nav {
@@ -36,6 +50,7 @@
   align-items: center;
   gap: 0.3rem;
   min-width: 0;
+  flex: 1 1 auto;
 }
 
 .nav-arrow {
@@ -64,9 +79,14 @@
 }
 
 .menu-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
   font-size: 1.2rem;
   line-height: 1;
-  padding: 0.2rem 0.6rem;
+  padding: 0.2rem 0.4rem;
+  flex-shrink: 0;
 }
 
 .dropdown-menu {

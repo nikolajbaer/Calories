@@ -47,8 +47,12 @@ export function CampaignHeader({ campaign, date, latestWeight, onNavigate, onTod
           >
             ‹
           </button>
-          <span className="app-header-date">
-            {formatShortDate(date)} · Day {dayNumber(campaign.startDate, date)}
+          <span className="app-header-date-group">
+            <span className="app-header-date">{formatShortDate(date)}</span>
+            {daysToGoal !== null && (
+              <span className="header-projection">({formatProjection(daysToGoal)} left)</span>
+            )}
+            <span className="app-header-date">· Day {dayNumber(campaign.startDate, date)}</span>
           </span>
           <button
             type="button"
@@ -68,7 +72,7 @@ export function CampaignHeader({ campaign, date, latestWeight, onNavigate, onTod
         <div className="menu-wrap" ref={menuRef}>
           <button
             type="button"
-            className="icon-button menu-trigger"
+            className="menu-trigger"
             aria-label="Campaign menu"
             onClick={() => setMenuOpen((s) => !s)}
           >
@@ -152,12 +156,6 @@ export function CampaignHeader({ campaign, date, latestWeight, onNavigate, onTod
           )}
         </div>
       </div>
-
-      {daysToGoal !== null && (
-        <p className="goal-projection">
-          {formatProjection(daysToGoal)} to {campaign.targetWeight} lb at this pace
-        </p>
-      )}
 
       {editing && <CampaignEditForm campaign={campaign} onDone={() => setEditing(false)} />}
     </header>
