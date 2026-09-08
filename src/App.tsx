@@ -68,13 +68,17 @@ function DayView({ campaign }: { campaign: Campaign }) {
 
   const eaten = foodEntries.reduce((sum, e) => sum + foodEntryCalories(e), 0);
   const exerciseCalories = exerciseEntries.reduce((sum, e) => sum + e.caloriesBurned, 0);
-  const defaultWeight = weightEntry?.weight ?? latestWeightEntry?.weight ?? campaign.startWeight;
+  // The most recently logged weight overall, regardless of which day is being viewed —
+  // the goal projection reflects "where you are now," not the viewed day's own reading.
+  const latestWeight = latestWeightEntry?.weight ?? campaign.startWeight;
+  const defaultWeight = weightEntry?.weight ?? latestWeight;
 
   return (
     <div className="app-shell">
       <CampaignHeader
         campaign={campaign}
         date={viewedDate}
+        latestWeight={latestWeight}
         onNavigate={(deltaDays) => setViewedDate((d) => addDays(d, deltaDays))}
         onToday={() => setViewedDate(todayISO())}
       />

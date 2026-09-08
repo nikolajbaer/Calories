@@ -3,16 +3,18 @@ import type { Campaign } from '../types';
 import { deleteCampaign, endCampaign, resumeCampaign } from '../repo';
 import { useEndedCampaigns } from '../hooks';
 import { formatShortDate, dayNumber, todayISO } from '../date';
+import { formatProjection, projectedDaysToGoal } from '../projection';
 import { CampaignEditForm } from './CampaignEditForm';
 
 interface CampaignHeaderProps {
   campaign: Campaign;
   date: string;
+  latestWeight: number;
   onNavigate: (deltaDays: number) => void;
   onToday: () => void;
 }
 
-export function CampaignHeader({ campaign, date, onNavigate, onToday }: CampaignHeaderProps) {
+export function CampaignHeader({ campaign, date, latestWeight, onNavigate, onToday }: CampaignHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [editing, setEditing] = useState(false);
   const endedCampaigns = useEndedCampaigns();
@@ -30,6 +32,7 @@ export function CampaignHeader({ campaign, date, onNavigate, onToday }: Campaign
   }, [menuOpen]);
 
   const isToday = date === todayISO();
+  const daysToGoal = projectedDaysToGoal(latestWeight, campaign.targetWeight, campaign.deficitTarget);
 
   return (
     <header className="app-header">
@@ -149,6 +152,12 @@ export function CampaignHeader({ campaign, date, onNavigate, onToday }: Campaign
           )}
         </div>
       </div>
+
+      {daysToGoal !== null && (
+        <p className="goal-projection">
+          {formatProjection(daysToGoal)} to {campaign.targetWeight} lb at this pace
+        </p>
+      )}
 
       {editing && <CampaignEditForm campaign={campaign} onDone={() => setEditing(false)} />}
     </header>

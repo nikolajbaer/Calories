@@ -13,6 +13,12 @@
   border-bottom: 1px solid var(--border);
 }
 
+.goal-projection {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
 .app-header-line {
   display: flex;
   justify-content: space-between;
