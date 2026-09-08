@@ -22,9 +22,16 @@ export function FoodEntryList({ entries }: FoodEntryListProps) {
               unit={entry.servingUnit}
               quantity={entry.quantity}
               onChange={(q) => updateFoodEntryQuantity(entry.id, q)}
-              onRemove={() => deleteFoodEntry(entry.id)}
             />
             <span className="entry-calories">{Math.round(foodEntryCalories(entry))} cal</span>
+            <button
+              type="button"
+              className="row-icon-button"
+              aria-label={`Remove ${entry.name}`}
+              onClick={() => deleteFoodEntry(entry.id)}
+            >
+              ⛔
+            </button>
           </div>
         </li>
       ))}

@@ -54,6 +54,23 @@ export async function resumeCampaign(id: string): Promise<void> {
   });
 }
 
+/** Permanently deletes a campaign and every food/exercise/weight entry logged under it. */
+export async function deleteCampaign(id: string): Promise<void> {
+  await db.transaction(
+    'rw',
+    db.campaigns,
+    db.foodEntries,
+    db.exerciseEntries,
+    db.weightEntries,
+    async () => {
+      await db.foodEntries.where('campaignId').equals(id).delete();
+      await db.exerciseEntries.where('campaignId').equals(id).delete();
+      await db.weightEntries.where('campaignId').equals(id).delete();
+      await db.campaigns.delete(id);
+    },
+  );
+}
+
 export function dailyGoal(campaign: Campaign): number {
   return campaign.baseRate - campaign.deficitTarget;
 }

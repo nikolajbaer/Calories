@@ -15,6 +15,7 @@ import { CampaignHeader } from './components/CampaignHeader';
 import { ProgressMeter } from './components/ProgressMeter';
 import { FoodEntryForm } from './components/FoodEntryForm';
 import { FoodEntryList } from './components/FoodEntryList';
+import { FoodLibraryScreen } from './components/FoodLibraryScreen';
 import { ExercisePanel } from './components/ExercisePanel';
 import { WeightLog } from './components/WeightLog';
 import './App.css';
@@ -45,6 +46,7 @@ function App() {
 
 function DayView({ campaign }: { campaign: Campaign }) {
   const [viewedDate, setViewedDate] = useState(todayISO());
+  const [showFoodLibrary, setShowFoodLibrary] = useState(false);
 
   const foodEntries = useFoodEntriesForDay(campaign.id, viewedDate);
   const exerciseEntries = useExerciseEntriesForDay(campaign.id, viewedDate);
@@ -58,6 +60,10 @@ function DayView({ campaign }: { campaign: Campaign }) {
     latestWeightEntry === undefined
   ) {
     return null; // still loading this day's data
+  }
+
+  if (showFoodLibrary) {
+    return <FoodLibraryScreen onClose={() => setShowFoodLibrary(false)} />;
   }
 
   const eaten = foodEntries.reduce((sum, e) => sum + foodEntryCalories(e), 0);
@@ -87,7 +93,12 @@ function DayView({ campaign }: { campaign: Campaign }) {
       <section className="panel">
         <div className="panel-header">
           <h2>Food</h2>
-          <span className="panel-total">{Math.round(eaten)} cal</span>
+          <div className="panel-header-right">
+            <button type="button" className="link-button" onClick={() => setShowFoodLibrary(true)}>
+              Manage
+            </button>
+            <span className="panel-total">{Math.round(eaten)} cal</span>
+          </div>
         </div>
         <FoodEntryForm campaignId={campaign.id} date={viewedDate} onAdded={() => {}} />
         <FoodEntryList entries={foodEntries} />
