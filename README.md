@@ -18,6 +18,13 @@ data lives in the browser's IndexedDB — nothing is sent to a server.
   snapshots its nutrition onto that day's entry, so editing or deleting a
   library item later never rewrites history.
 
+## Installing on a phone
+
+The app is a PWA: the production build ships a web manifest and a service
+worker, so once it's served over HTTPS you can open it in Chrome on Android
+and choose **Install app** (or **Add to Home screen**). It then launches in
+its own window and works offline.
+
 ## Development
 
 ```bash

@@ -57,10 +57,30 @@
   box-sizing: border-box;
 }
 
+html {
+  /* No pull-to-refresh or scroll chaining glow — behaves like an app, not a page. */
+  overscroll-behavior-y: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
   background: var(--page-plane);
   color: var(--text-primary);
+  -webkit-tap-highlight-color: transparent;
+  /* Keep content clear of the status bar, notches and gesture bar. */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+}
+
+button,
+label,
+summary {
+  /* Controls shouldn't select as text on long-press or wait for double-tap zoom. */
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
 }
 
 h1,
